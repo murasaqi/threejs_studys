@@ -38,10 +38,10 @@
       <file leaf-file-name="linestudy.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/linestudy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="451" column="13" selection-start-line="451" selection-start-column="13" selection-end-line="451" selection-end-column="13" />
+            <state relative-caret-position="483">
+              <caret line="458" column="59" selection-start-line="458" selection-start-column="59" selection-end-line="458" selection-end-column="59" />
               <folding>
-                <marker date="1471443337000" expanded="true" signature="10978:11151" ph="..." />
+                <marker date="1471444028000" expanded="true" signature="10978:11151" ph="..." />
               </folding>
             </state>
           </provider>
@@ -261,12 +261,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1471350545271</updated>
-      <workItem from="1471350547516" duration="35311000" />
+      <workItem from="1471350547516" duration="35339000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35311000" />
+    <option name="totallyTimeSpent" value="35339000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="138" y="23" width="1262" height="877" extended-state="0" />
@@ -364,10 +364,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/linestudy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="451" column="13" selection-start-line="451" selection-start-column="13" selection-end-line="451" selection-end-column="13" />
+        <state relative-caret-position="483">
+          <caret line="458" column="59" selection-start-line="458" selection-start-column="59" selection-end-line="458" selection-end-column="59" />
           <folding>
-            <marker date="1471443337000" expanded="true" signature="10978:11151" ph="..." />
+            <marker date="1471444028000" expanded="true" signature="10978:11151" ph="..." />
           </folding>
         </state>
       </provider>
