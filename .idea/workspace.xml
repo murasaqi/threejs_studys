@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5937929-9572-4358-af7c-9dc63dad8492" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/linestudy.js" afterPath="$PROJECT_DIR$/js/linestudy.js" />
-    </list>
+    <list default="true" id="d5937929-9572-4358-af7c-9dc63dad8492" name="Default" comment="" />
     <ignored path="threejs_studys.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -39,8 +36,8 @@
       <file leaf-file-name="linestudy.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/linestudy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="194" column="6" selection-start-line="194" selection-start-column="6" selection-end-line="194" selection-end-column="6" />
+            <state relative-caret-position="506">
+              <caret line="214" column="29" selection-start-line="214" selection-start-column="29" selection-end-line="214" selection-end-column="29" />
               <folding>
                 <marker date="1471444426000" expanded="true" signature="10981:11154" ph="..." />
               </folding>
@@ -262,12 +259,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1471350545271</updated>
-      <workItem from="1471350547516" duration="35748000" />
+      <workItem from="1471350547516" duration="35885000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35748000" />
+    <option name="totallyTimeSpent" value="35885000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="138" y="23" width="1262" height="877" extended-state="0" />
@@ -365,8 +362,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/linestudy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="194" column="6" selection-start-line="194" selection-start-column="6" selection-end-line="194" selection-end-column="6" />
+        <state relative-caret-position="506">
+          <caret line="214" column="29" selection-start-line="214" selection-start-column="29" selection-end-line="214" selection-end-column="29" />
           <folding>
             <marker date="1471444426000" expanded="true" signature="10981:11154" ph="..." />
           </folding>
