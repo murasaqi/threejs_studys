@@ -458,8 +458,8 @@ console.log(pointCloud);
 
 function render() {
     var date = new Date();
-    if(preSec != date.getSeconds() && date.getSeconds() % 7 == 0 || click){
-    //if(click){
+    //if(preSec != date.getSeconds() && date.getSeconds() % 7 == 0 || click){
+    if(click){
         rotate.y = Math.random() * 5 - 2.5;
         rotate.x = Math.random() * 5 - 2.5;
         rotate.z = Math.random() * 5 - 2.5;
