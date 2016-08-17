@@ -264,6 +264,18 @@
         // resizeイベントを作成
         window.addEventListener( 'resize', onWindowResize, false );
 
+
+
+
+        // texture の作成
+        var planegeometry = new THREE.PlaneGeometry(200,200,8,8);
+        var texture = new THREE.CanvasTexture(canvas);
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        var planematerial = new THREE.MeshBasicMaterial(side:THREE.DoubleSide,map:texture,transparent:true,overdraw:true);
+        var plane = new THREE.Mesh(geometry,material)
+        scene.add(plane)
+
     }
 
     function onWindowResize( event ) {

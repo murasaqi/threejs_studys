@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<body>
+<script>
+
+    var canvas = document.createElement('canvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var context = canvas.getContext('2d');
+    context.font = " bold 200px sans-serif";
+    context.beginPath();
+    context.fillText("text", canvas.width/2, canvas.height/2);
+    context.fill();
+    document.body.appendChild(canvas);
+
+</script>
+</body>
+</html>

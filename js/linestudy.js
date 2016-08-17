@@ -1,7 +1,6 @@
 
 init();
 animate();
-
 var container, camera, scene,controls,group,renderer,stats,r;
 
 var maxParticleCount;
@@ -19,13 +18,34 @@ var colors;
 var groupPos ,nowGroupPos;
 
 var renderColor;
-var bWhite = true;
+var bWhite = false;
 var nowbgcolor,nextbgcolor,whitebgcolor,blackbgcolor;
-
+var click = false;
 var arraynow,arraywhite,arrayblack, arraynext;
+var planematerial;
+// nowbgcolors = [
+
+var textTexture;
+var texture;
+var textAlpha = 1.0;
+var timer= 0.0;
+var planeMesh;
+var canvas;
+var context;
+
+var alphaTimer;
+var textPos;
+
+
+
+
+//console.log(nowbgcolor.push("aaa"));
 
 
 function init() {
+
+    //createCanvasTexture();
+    console.log(textTexture);
 
 
     container = document.getElementById( 'container' );
@@ -41,6 +61,10 @@ function init() {
     arraynext = new Float32Array(7*3);
     arraywhite = new Float32Array(7*3);
     arrayblack = new Float32Array(7*3);
+
+    alphaTimer = new Float32Array(2);
+    alphaTimer[0] = 0.0;
+    alphaTimer[1] = 0.0;
 
 
     nowbgcolor[0] = new THREE.Color(250,250,250);
@@ -90,29 +114,6 @@ function init() {
 
     }
 
-    // ];
-
-    // nextbgcolor = [
-    //     new THREE.Color(250,250,250),
-    //     new THREE.Color(240,240,240),
-    //     new THREE.Color(230,230,230),
-    //     new THREE.Color(220,220,220),
-    //     new THREE.Color(200,200,200),
-    //     new THREE.Color(180,180,180),
-    //     new THREE.Color(140,140,140),
-    // ];
-
-//
-//     nextbgcolor.push(new THREE.Color(250,250,250));
-//     nextbgcolor.push(new THREE.Color(240,240,240));
-//     nextbgcolor.push(new THREE.Color(230,230,230));
-//     nextbgcolor.push(new THREE.Color(220,220,220));
-//     nextbgcolor.push(new THREE.Color(200,200,200));
-//     nextbgcolor.push(new THREE.Color(180,180,180));
-//     nextbgcolor.push(new THREE.Color(140,140,140));
-
-    //nowbgcolor.push("2");
-    //
 
     camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 8000 );
     camera.position.z = 2000;
@@ -256,7 +257,49 @@ function init() {
 
     window.addEventListener( 'resize', onWindowResize, false );
 
+
+
+    canvas = document.createElement('canvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    context = canvas.getContext('2d');
+    textPos = new THREE.Vector2(Math.random()*window.innerWidth,  Math.random()*window.innerHeight/2);
+
+    createTexture('test', "rgba(255,255,255,0.1)");
+
+    texture = new THREE.CanvasTexture(canvas);
+    texture.minFilter = THREE.LinearFilter;
+    texture.magFilter = THREE.LinearFilter;
+
+    planematerial = new THREE.MeshBasicMaterial({map: texture,alpha:true});
+    planematerial.transparent = true;
+    planematerial.blending = THREE["AdditiveBlending"];
+
+    var planegeometry = new THREE.PlaneGeometry(100*window.innerWidth/window.innerHeight,100,8,8);
+    planeMesh = new THREE.Mesh(planegeometry,planematerial);
+    planeMesh.position.z = 1900;
+    scene.add(planeMesh);
+
+
+
+
 }
+
+function createTexture(text,color)
+{
+
+    context.clearRect(0,0,canvas.width,canvas.height);
+    context.textAlign = "center";
+    context.beginPath();
+    context.fillStyle = color
+    context.font = " bold 300px 'Source Sans Pro'";
+    context.fillText(text, textPos.x,  textPos.y);
+    context.fill();
+
+
+
+}
+
 
 
 // -------------------------------------- windowresize -------------------------------------- //
@@ -270,8 +313,9 @@ function onWindowResize() {
 
 }
 
-function animate() {
 
+function animate() {
+    timer += 0.1;
     var counter = 0;
     var speed = 0.1;
     for(var i = 1; i<= NUM; i++)
@@ -302,14 +346,35 @@ function animate() {
         }
     }
 
+    var date = new Date();
+
+    //timer += 0.1;
+    //alphaTimer[0] += (Math.PI*2 - alphaTimer[0])*0.02;
+
+    if(alphaTimer[0] <= Math.PI*2){
+        alphaTimer[0] += 0.1;
+    }
+
+    textAlpha = Math.sin(alphaTimer[0]);
+    var rgb = "rgba(255,255,255," + String(textAlpha*0.4) + ")";
+    var textureText = String(date.getHours()) + ":" + String(date.getMinutes()) + ":" + String(date.getSeconds());
+    createTexture(textureText, rgb);
+    texture.needsUpdate = true;
+
+
+
+    //planeMesh.material.map.image = texture;
+
+
+
     //console.log($('#container'));
 
         // var geometrycolors = pointCloud.geometry.attributes.color;
         var nowColor =  pointCloud.material.color;
     //console.log(renderColor.r - nowColor.r);
-         nowColor.r += (renderColor.r - nowColor.r) * 0.1;
-         nowColor.g += (renderColor.g - nowColor.g) * 0.1;
-         nowColor.b += (renderColor.b - nowColor.b) * 0.1;
+         nowColor.r += (renderColor.r - nowColor.r) * 0.05;
+         nowColor.g += (renderColor.g - nowColor.g) * 0.05;
+         nowColor.b += (renderColor.b - nowColor.b) * 0.05;
         //console.log(renderColor);
         pointCloud.material.color = nowColor;
         lineMesh.material.color = nowColor;
@@ -352,9 +417,9 @@ function animate() {
         // nowbgcolor[i].g += (nextbgcolor[i].g - nowbgcolor[i].g) * 0.1;
         // nowbgcolor[i].b += (nextbgcolor[i].b - nowbgcolor[i].b) * 0.1;
 
-        arraynow[i*3+0] += (arraynext[i*3+0] - arraynow[i*3+0]) * 0.1;
-        arraynow[i*3+1] += (arraynext[i*3+1] - arraynow[i*3+1]) * 0.1;
-        arraynow[i*3+2] += (arraynext[i*3+2] - arraynow[i*3+2]) * 0.1;
+        arraynow[i*3+0] += (arraynext[i*3+0] - arraynow[i*3+0]) * 0.05;
+        arraynow[i*3+1] += (arraynext[i*3+1] - arraynow[i*3+1]) * 0.05;
+        arraynow[i*3+2] += (arraynext[i*3+2] - arraynow[i*3+2]) * 0.05;
     }
 
     $("body").css("background","radial-gradient(rgb("+
@@ -393,7 +458,8 @@ console.log(pointCloud);
 
 function render() {
     var date = new Date();
-    if(preSec != date.getSeconds() && date.getSeconds() % 4 == 0){
+    if(preSec != date.getSeconds() && date.getSeconds() % 7 == 0 || click){
+    //if(click){
         rotate.y = Math.random() * 5 - 2.5;
         rotate.x = Math.random() * 5 - 2.5;
         rotate.z = Math.random() * 5 - 2.5;
@@ -416,12 +482,30 @@ function render() {
         }
         console.log(arraynext);
 
+        alphaTimer[0] = 0.0;
 
+        var _x = window.innerWidth/2 + Math.random()*window.innerWidth*0.4 - Math.random()*window.innerWidth*0.4;
+        var _y = window.innerHeight/2 + Math.random()*window.innerHeight*0.4 - Math.random()*window.innerHeight*0.2;
+        textPos.set(_x,_y);
+
+
+        click = false;
 
 
     }
+    // if(click){
+    //     alphaTimer[0] = 0.0;
+    //
+    //     var _x = window.innerWidth/2 + Math.random()*window.innerWidth*0.4 - Math.random()*window.innerWidth*0.4;
+    //     var _y = window.innerHeight/2 + Math.random()*window.innerHeight*0.4 - Math.random()*window.innerHeight*0.2;
+    //     textPos.set(_x,_y);
+    //
+    //
+    //     click = false;
+    // }
 
     //rgb(250,250,250)0%,rgb(240,240,240)40%,rgb(230,230,230)50%,rgb(220,220,220)70%,rgb(200,200,200)80%,rgb(180,180,180)90%,rgb(140,140,140)100%)
+
 
 
 
@@ -450,3 +534,11 @@ function render() {
 
 
 }
+console.log(    planeMesh
+);
+var elem = document.getElementById("container");
+
+elem.addEventListener("click", function(){
+    click = true;
+
+}, false);
