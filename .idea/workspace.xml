@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5937929-9572-4358-af7c-9dc63dad8492" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/linestudy.js" afterPath="$PROJECT_DIR$/js/linestudy.js" />
     </list>
     <ignored path="threejs_studys.iws" />
@@ -28,8 +29,8 @@
       <file leaf-file-name="line_study.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/line_study.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="344">
+              <caret line="55" column="7" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -38,10 +39,10 @@
       <file leaf-file-name="linestudy.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/linestudy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="458" column="59" selection-start-line="458" selection-start-column="59" selection-end-line="458" selection-end-column="59" />
+            <state relative-caret-position="206">
+              <caret line="194" column="6" selection-start-line="194" selection-start-column="6" selection-end-line="194" selection-end-column="6" />
               <folding>
-                <marker date="1471444028000" expanded="true" signature="10978:11151" ph="..." />
+                <marker date="1471444426000" expanded="true" signature="10981:11154" ph="..." />
               </folding>
             </state>
           </provider>
@@ -261,12 +262,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1471350545271</updated>
-      <workItem from="1471350547516" duration="35339000" />
+      <workItem from="1471350547516" duration="35748000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35339000" />
+    <option name="totallyTimeSpent" value="35748000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="138" y="23" width="1262" height="877" extended-state="0" />
@@ -356,18 +357,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/line_study.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state relative-caret-position="344">
+          <caret line="55" column="7" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/linestudy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="458" column="59" selection-start-line="458" selection-start-column="59" selection-end-line="458" selection-end-column="59" />
+        <state relative-caret-position="206">
+          <caret line="194" column="6" selection-start-line="194" selection-start-column="6" selection-end-line="194" selection-end-column="6" />
           <folding>
-            <marker date="1471444028000" expanded="true" signature="10978:11151" ph="..." />
+            <marker date="1471444426000" expanded="true" signature="10981:11154" ph="..." />
           </folding>
         </state>
       </provider>
