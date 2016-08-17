@@ -4,7 +4,6 @@
     <list default="true" id="d5937929-9572-4358-af7c-9dc63dad8492" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/linestudy.js" afterPath="$PROJECT_DIR$/js/linestudy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/line_study.html" afterPath="$PROJECT_DIR$/line_study.html" />
     </list>
     <ignored path="threejs_studys.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,23 +26,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="line_study.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="line_study.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/line_study.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+            <state relative-caret-position="-31">
+              <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="linestudy.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="linestudy.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/linestudy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="708">
-              <caret line="480" column="35" selection-start-line="480" selection-start-column="35" selection-end-line="480" selection-end-column="35" />
+            <state relative-caret-position="326">
+              <caret line="125" column="24" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
               <folding>
-                <marker date="1471442407000" expanded="true" signature="11014:11187" ph="..." />
+                <marker date="1471442755000" expanded="true" signature="10978:11151" ph="..." />
               </folding>
             </state>
           </provider>
@@ -110,8 +109,8 @@
         <option value="$PROJECT_DIR$/js/triangle_study.js" />
         <option value="$PROJECT_DIR$/multitexture.html" />
         <option value="$PROJECT_DIR$/canvastexturetest.html" />
-        <option value="$PROJECT_DIR$/js/linestudy.js" />
         <option value="$PROJECT_DIR$/line_study.html" />
+        <option value="$PROJECT_DIR$/js/linestudy.js" />
       </list>
     </option>
   </component>
@@ -263,12 +262,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1471350545271</updated>
-      <workItem from="1471350547516" duration="33938000" />
+      <workItem from="1471350547516" duration="34124000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33938000" />
+    <option name="totallyTimeSpent" value="34124000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="138" y="23" width="1262" height="877" extended-state="0" />
@@ -356,21 +355,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/linestudy.js">
+    <entry file="file://$PROJECT_DIR$/line_study.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="480" column="35" selection-start-line="480" selection-start-column="35" selection-end-line="480" selection-end-column="35" />
-          <folding>
-            <marker date="1471442407000" expanded="true" signature="11014:11187" ph="..." />
-          </folding>
+        <state relative-caret-position="-31">
+          <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/line_study.html">
+    <entry file="file://$PROJECT_DIR$/js/linestudy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="326">
+          <caret line="125" column="24" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
+          <folding>
+            <marker date="1471442755000" expanded="true" signature="10978:11151" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

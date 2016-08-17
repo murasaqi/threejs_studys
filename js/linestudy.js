@@ -118,7 +118,7 @@ function init() {
     camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 8000 );
     camera.position.z = 2000;
 
-    controls = new THREE.OrbitControls( camera, container );
+    //controls = new THREE.OrbitControls( camera, container );
 
     scene = new THREE.Scene();
     // scene.fog = new THREE.Fog("rgb(240,200,240)",0,3000);
@@ -252,9 +252,7 @@ function init() {
 
     //
 
-    stats = new Stats();
-    container.appendChild( stats.dom );
-
+    // stats = new Stats();
     window.addEventListener( 'resize', onWindowResize, false );
 
 
@@ -450,7 +448,7 @@ function animate() {
 
     requestAnimationFrame( animate );
 
-    stats.update();
+    //stats.update();
     render();
 
 }
