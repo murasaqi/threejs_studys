@@ -170,13 +170,6 @@ function init() {
 
     }
 
-    for(var i = 0; i < meshs.length; i++)
-    {
-        var values {
-
-        }
-    }
-    //
 
     renderer = new THREE.WebGLRenderer( { antialias: false } );
     renderer.setClearColor( scene.fog.color );
@@ -226,7 +219,7 @@ function animate() {
         //
         //
         //
-        //     //geomeyrycolors.setXYZ(j,0.3,0.3,0.3);
+             //geomeyrycolors.setXYZ(j,0.3,0.3,0.3);
         // }
 
         for(var j = 0; j < geomeyrycolors.array.length/3; j++){
