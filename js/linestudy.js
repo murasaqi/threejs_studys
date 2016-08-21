@@ -293,11 +293,7 @@ function createTexture(text,color)
     context.font = " bold 300px 'Source Sans Pro'";
     context.fillText(text, textPos.x,  textPos.y);
     context.fill();
-
-
-
 }
-
 
 
 // -------------------------------------- windowresize -------------------------------------- //
