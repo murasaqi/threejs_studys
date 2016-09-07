@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>font texture study</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            color: #cccccc;
+            font-family:Monospace;
+            font-size:13px;
+            text-align:center;
+
+            background-color: #050505;
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        #info {
+            position: absolute;
+            top: 0px; width: 100%;
+            padding: 5px;
+        }
+
+        a {
+            color: #0080ff;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script src="./js/three.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/stats.min.js"></script>
+<script src="./js/perlin.js"></script>
+
+<script>
+
+    if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+    var container, stats;
+    var textPosx;
+
+    var camera, scene, renderer;
+    var planeGeometry,counter,planeMesh;
+    var recordVert;
+    var time,sec,pre_sec, amp;
+    var noiseSeed;
+
+
+    var mesh;
+    var controls;
+    var timer = 0.0;
+    var text,textColor;
+
+    var canvas,texture;
+    var textPos;
+
+    init();
+    animate();
+
+    function createTexture(text,color)
+    {
+
+        textPosx = 0.0;
+
+
+        context.clearRect(0,0,canvas.width,canvas.height);
+        context.textAlign = "center";
+        context.beginPath();
+        context.fillStyle = color;
+        context.font = " bold 200px 'Yu Gothic'";
+        var textWidth = context.measureText(text).width;
+        context.fillText(text, canvas.width/2+textPosx,  canvas.height/2+75);
+        context.fill();
+    }
+
+    function init() {
+        container = document.getElementById( 'container' );
+
+
+        //
+        amp = 20;
+        counter = 0;
+        recordVert = [];
+
+        time = new Date();
+        sec = time.getMilliseconds();
+
+        camera = new THREE.PerspectiveCamera( 27, window.innerWidth / window.innerHeight, 1, 3500 );
+        camera.position.z = 1000;
+
+        scene = new THREE.Scene();
+        //scene.fog = new THREE.Fog( 0x050505, 2000, 3500 );
+        scene.fog = new THREE.Fog( 0x000000, -1000,2000 );
+
+
+
+
+
+
+
+
+
+
+        scene.add( new THREE.AmbientLight( 0x444444 ) );
+
+        var light1 = new THREE.DirectionalLight( 0xffffff, 0.5 );
+        light1.position.set( 1, 1, 1 );
+        scene.add( light1 );
+
+        var light2 = new THREE.DirectionalLight( 0xffffff, 1.5 );
+        light2.position.set( 0, -1, 0 );
+        scene.add( light2 );
+
+        controls = new THREE.OrbitControls( camera, container );
+
+
+        // -------- create texture -------
+        canvas = document.createElement('canvas');
+        //container.appendChild( canvas );
+        canvas.width = 8000;
+        canvas.height = 200;
+        context = canvas.getContext('2d');
+        textPos = new THREE.Vector2(Math.random()*window.innerWidth,  Math.random()*window.innerHeight/2);
+
+        text = 'まあ向さんを煩悶世の中まだ意見をあるたお蔭その天然私か増減をというお発展んなくあるだと、その先刻はこれか科学天然が見が、木下君ののが他の私にああお養成と懸て私離れ離れとご説明に忘れように無論お説明を云っましたて、ついに断然教育を思っなけれつつならでしょ方を取らなけれた。そこでまたご態度にいう訳はそれほど正直としでしょが、その錐では勧めませでという学芸をするて切らべきです。';
+        textColor = "rgba(255,255,255,1.0)";
+        createTexture(text, textColor);
+
+        texture = new THREE.CanvasTexture(canvas);
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+        texture.anisotropy = 16;
+
+
+
+        // ======== debug point ========= //
+
+        var triangles = 2;
+        noiseSeed = new Array();
+
+
+
+
+
+        var planematerial = new THREE.MeshPhongMaterial( {
+            map:texture,
+            alpha:true,
+            side: THREE.DoubleSide,
+            shading: THREE.SmoothShading,
+            wireframe: false
+        } );
+
+        planematerial.transparent = true;
+        planematerial.blending = THREE["AdditiveBlending"];
+
+        var widthsegments = 121;
+        var planeMesh = new THREE.Mesh( new THREE.PlaneGeometry( 700, 10, widthsegments, 1 ), planematerial );
+        planeMesh.position.set( 0, 100, 0 );
+        scene.add( planeMesh );
+
+        console.log(planeMesh);
+        planeGeometry = planeMesh.geometry;
+
+
+
+
+        //console.log(planeGeometry.vertices.length);
+        var quarter = planeGeometry.vertices.length/4;
+        var half = planeGeometry.vertices.length/2;
+        var zStep = widthsegments/9;
+
+        var noisex,noisey;
+        noisex = 0.0;
+        noisey = 0.0;
+        for(var i = 0; i < planeGeometry.vertices.length;i ++)
+        {
+            if(i< half){
+                if(i< quarter){
+                    planeGeometry.vertices[i].z = (i % quarter)*zStep;
+                } else {
+                    planeGeometry.vertices[i].z = quarter*zStep - ((i-quarter) % quarter)*zStep;
+                }
+
+            } else {
+                var num = i-half;
+                if(i< half+quarter){
+
+                    planeGeometry.vertices[i].z = (num % quarter)*zStep;
+                } else {
+                    planeGeometry.vertices[i].z = quarter*zStep - ((num-quarter) % quarter)*zStep;
+                }
+            }
+
+            noisex += 0.01;
+            noisey += 0.03;
+
+            noiseSeed.push({x:noisex,y:noisey});
+
+
+        }
+
+        console.log(noiseSeed);
+        planeGeometry.verticesNeedUpdate = true;
+
+        for(var i = 0; i < planeGeometry.vertices.length; i++)
+        {
+            var p = new THREE.Vector3(
+                    planeGeometry.vertices[i].x,
+                    planeGeometry.vertices[i].y,
+                    planeGeometry.vertices[i].z
+                                        )
+            recordVert.push(p);
+        }
+
+
+       for(var i = 0; i < 5; i ++){
+           var copyObj = planeMesh.clone();
+
+           copyObj.position.set(0,100-i*50,0);
+           scene.add( copyObj );
+       }
+
+
+
+
+
+
+
+
+
+
+
+        //
+
+        renderer = new THREE.WebGLRenderer( { antialias: false } );
+        renderer.setClearColor( scene.fog.color );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+
+        container.appendChild( renderer.domElement );
+
+        //
+
+        stats = new Stats();
+        //container.appendChild( stats.dom );
+
+        //
+
+        window.addEventListener( 'resize', onWindowResize, false );
+
+    }
+
+    function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+    }
+
+    //
+
+    function animate() {
+
+        requestAnimationFrame( animate );
+        timer += 0.05;
+
+        //counter++;
+
+        time = new Date();
+        sec = time.getSeconds();
+
+        if(sec % 2 == 0)
+        {
+            amp += (20-amp)*0.3;
+        }else {
+            amp += (2-amp)*0.1;
+        }
+
+        if(sec % 2 == 0 && pre_sec != sec){
+            var max = 0.1;
+            var min = 0.3
+            for(var i = 0; i < planeGeometry.vertices.length;i ++) {
+                this.noiseSeed[i].x += Math.random() * (max - min) + min;
+                this.noiseSeed[i].y+= Math.random() * (max - min) + min;
+            }
+        }
+
+
+        for(var i = 0; i < planeGeometry.vertices.length;i ++)
+        {
+            var vec = new THREE.Vector3(planeGeometry.vertices[i].x,planeGeometry.vertices[i].y,planeGeometry.vertices[i].z);
+
+            vec.normalize();
+
+//            multiplyScalar(1*Math.sin(i*Math.PI/3+timer))
+
+            var value = noise.perlin2(this.noiseSeed[i].x ,this.noiseSeed[i].y)*8;
+            //console.log(value);
+
+            //recordVert[i].normalize();
+            planeGeometry.vertices[i].x = recordVert[i].x + amp*vec.x * Math.sin(i*Math.PI/5+timer);
+            planeGeometry.vertices[i].y = recordVert[i].y + amp*vec.y * Math.sin(i*Math.PI/5+timer);
+            planeGeometry.vertices[i].z = recordVert[i].z + amp*value*vec.z * Math.sin(i*Math.PI/5+timer);
+            //planeGeometry.vertices[i] +=  recordVert[i].multiplyScalar(2);
+
+
+
+        }
+        planeGeometry.verticesNeedUpdate = true;
+        planeGeometry.computeVertexNormals();
+
+
+        render();
+        stats.update();
+        pre_sec = sec;
+
+    }
+
+    function render() {
+
+        var time = Date.now() * 0.001;
+
+//        mesh.rotation.x = time * 0.25;
+//        mesh.rotation.y = time * 0.5;
+
+        renderer.render( scene, camera );
+
+    }
+
+</script>
+
+</body>
+</html>

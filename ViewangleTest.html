@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="Ja">
+<head>
+    <title>viewangle test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            font-family: Monospace;
+            background-color: #f0f0f0;
+            margin: 0px;
+            overflow: hidden;
+        }
+        .audio {
+            position: absolute;
+            right : 0;
+        }
+    </style>
+</head>
+<body>
+<script src="./js/three.js"></script>
+<script src="./js/TrackballControls.js"></script>
+<script src="js/stats.min.js"></script>
+<!--<script src="perlin.js"></script>-->
+<script src="js/OrbitControls.js"></script>
+<script src="./js/dat.gui.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+
+<script>
+
+
+
+
+
+
+    var container, stats;
+    var controls;
+    var points;
+
+    var camera, cameraTarget, scene, renderer;
+
+
+
+    init();
+    render();
+
+
+
+    function init() {
+
+
+
+
+        container = document.createElement( 'div' );
+        document.body.appendChild( container );
+
+        camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 1, 30000 );
+        camera.position.set( 0, 0, 2000 );
+
+        cameraTarget = new THREE.Vector3( 0, -0.25, 0 );
+
+        scene = new THREE.Scene();
+
+        //scene.fog = new THREE.Fog( 0xffffff, 2, 15 );
+
+        controls = new THREE.OrbitControls( camera, container );
+
+
+
+
+
+        var pointGeometry = new THREE.
+
+        // renderer
+
+        renderer = new THREE.WebGLRenderer( { antialias: true } );
+        renderer.setClearColor( 0x000000 );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.renderReverseSided = false;
+
+        container.appendChild( renderer.domElement );
+
+        // stats
+
+        stats = new Stats();
+        container.appendChild( stats.dom );
+
+        // resize
+
+        window.addEventListener( 'resize', onWindowResize, false );
+
+    }
+
+    function addShadowedLight( x, y, z, color, intensity ) {
+
+        var directionalLight = new THREE.DirectionalLight( color, intensity );
+        directionalLight.position.set( x, y, z );
+        scene.add( directionalLight );
+
+        directionalLight.castShadow = true;
+
+        var d = 1;
+        directionalLight.shadow.camera.left = -d;
+        directionalLight.shadow.camera.right = d;
+        directionalLight.shadow.camera.top = d;
+        directionalLight.shadow.camera.bottom = -d;
+
+        directionalLight.shadow.camera.near = 1;
+        directionalLight.shadow.camera.far = 4;
+
+        directionalLight.shadow.mapSize.width = 1024;
+        directionalLight.shadow.mapSize.height = 1024;
+
+        directionalLight.shadow.bias = -0.005;
+
+
+
+    }
+
+    function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+    }
+
+    function animate() {
+
+        requestAnimationFrame( animate );
+
+        render();
+        stats.update();
+
+    }
+
+    function render() {
+
+        var timer = Date.now() * 0.0005;
+
+//        camera.position.x = Math.sin( timer ) * 3;
+//        camera.position.z = Math.cos( timer ) * 3;
+
+        //camera.lookAt( cameraTarget );
+
+        renderer.render( scene, camera );
+
+    }
+</script>
+
+</body>
+</html>

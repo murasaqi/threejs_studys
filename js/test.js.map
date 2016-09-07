@@ -1,0 +1,1 @@
+{"version":3,"sources":["test.es6"],"names":[],"mappings":";;;;IAAM,O,GACF,iBAAY,MAAZ,EAAoB,KAApB,EAA2B;AAAA;;AACvB,SAAK,MAAL,GAAc,MAAd;AACA,SAAK,KAAL,GAAa,KAAb;AACH,C","file":"test.js","sourcesContent":["class Polygon {\n    constructor(height, width) {\n        this.height = height;\n        this.width = width;\n    }\n}\n"]}

@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>three.js webgl - buffergeometry</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            color: #cccccc;
+            font-family:Monospace;
+            font-size:13px;
+            text-align:center;
+
+            background-color: #050505;
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        #info {
+            position: absolute;
+            top: 0px; width: 100%;
+            padding: 5px;
+        }
+
+        a {
+            color: #0080ff;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script src="js/three.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/stats.min.js"></script>
+
+<script>
+
+    if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+    var container, stats;
+
+    var camera, scene, renderer;
+    var controls;
+    var mesh;
+
+    init();
+    animate();
+
+    function init() {
+
+        container = document.getElementById( 'container' );
+
+        //
+
+
+        camera = new THREE.PerspectiveCamera( 27, window.innerWidth / window.innerHeight, 1, 3500 );
+        camera.position.z = 2000;
+
+        scene = new THREE.Scene();
+        scene.fog = new THREE.Fog( 0x050505, 2000, 3500 );
+
+        //
+
+        scene.add( new THREE.AmbientLight( 0x444444 ) );
+
+        var light1 = new THREE.DirectionalLight( 0xffffff, 0.5 );
+        light1.position.set( 1, 1, 1 );
+        scene.add( light1 );
+
+        var light2 = new THREE.DirectionalLight( 0xffffff, 1.5 );
+        light2.position.set( 0, 1, 1 );
+        scene.add( light2 );
+
+
+
+
+        // create mesh
+
+        var geometry = new THREE.PlaneBufferGeometry(300,100,20,1);
+
+        var vertexPos = [];
+        var rectnum = 3;
+        // 平面用の頂点を定義
+        // d - c
+        // |   |
+        // a - b
+
+        var pA = new THREE.Vector3();
+        var pB = new THREE.Vector3();
+        var pC = new THREE.Vector3();
+
+        var cb = new THREE.Vector3();
+        var ab = new THREE.Vector3();
+
+        var height = 100;
+        var width = 200;
+        var heightHalf = height/2;
+        var widthHalf = width /2;
+        for(var i = 0; i < rectnum; i++)
+        {
+            var vec = new THREE.Vector3(-1.0*widthHalf+(i*width), -1.0*heightHalf, 1.0);
+            vertexPos.push(vec);//a
+            var vec = new THREE.Vector3( 1.0*widthHalf+(i*width), -1.0*heightHalf, 1.0);
+            vertexPos.push(vec);//b
+            var vec = new THREE.Vector3(1.0*widthHalf+(i*width),  1.0*heightHalf, 1.0);
+            vertexPos.push(vec);//c
+            var vec = new THREE.Vector3(-1.0*widthHalf+(i*width),  1.0*heightHalf, 1.0);
+            vertexPos.push(vec);//d
+
+        }
+
+
+        var vertices = new Float32Array(vertexPos.length * 3);
+        var normals  = new Float32Array( vertexPos.length * 3 );
+        var indices  = new Uint16Array(vertexPos.length*3);
+
+        for(var i = 0; i < vertexPos.length; i++)
+        {
+            vertices[i * 3 + 0] = vertexPos[i].x;
+            vertices[i * 3 + 1] = vertexPos[i].y;
+            vertices[i * 3 + 2] = vertexPos[i].z;
+        }
+
+        // compute indices
+        for(var i = 0; i < rectnum; i++)
+        {
+            indices[i*6+0] = i*4 + 0;
+            indices[i*6+1] = i*4 + 1;
+            indices[i*6+2] = i*4 + 2;
+
+            indices[i*6+3] = i*4 + 0;
+            indices[i*6+4] = i*4 + 2;
+            indices[i*6+5] = i*4 + 3;
+        }
+
+
+        // compute nomarls
+        for(var i = 0; i < indices.length; i+=3)
+        {
+
+                cb.subVectors( vertexPos[indices[i+1]], vertexPos[indices[i]] );
+                ab.subVectors( vertexPos[indices[i+2]], vertexPos[indices[i]] );
+
+
+
+            ab.cross( cb );
+            // cbが法線なのでこれを正規化する
+            cb.normalize();
+
+
+            var nx = cb.x;
+            var ny = cb.y;
+            var nz = cb.z;
+
+            normals[ i*9 ]     = nx;
+            normals[ i*9 + 1 ] = ny;
+            normals[ i*9 + 2 ] = nz;
+
+            normals[ i*9 + 3 ] = nx;
+            normals[ i*9 + 4 ] = ny;
+            normals[ i*9 + 5 ] = nz;
+
+            normals[ i*9 + 6 ] = nx;
+            normals[ i*9 + 7 ] = ny;
+            normals[ i*9 + 8 ] = nz;
+
+        }
+
+
+//        geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 3));
+//        geometry.addAttribute('index',    new THREE.BufferAttribute(indices,  1));
+//        geometry.addAttribute('normal',    new THREE.BufferAttribute(normals,  1));
+
+        var material = new THREE.MeshPhongMaterial({
+            color: 0x3409438,
+            specular: 0xffffff,
+            shininess: 250,
+            side: THREE.DoubleSide,
+            wireframe:false
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position.z = 0;
+
+        scene.add(mesh);
+
+
+        renderer = new THREE.WebGLRenderer( { antialias: false } );
+        renderer.setClearColor( scene.fog.color );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+
+        container.appendChild( renderer.domElement );
+
+        //
+
+        stats = new Stats();
+        container.appendChild( stats.dom );
+
+        //
+
+        window.addEventListener( 'resize', onWindowResize, false );
+        controls = new THREE.OrbitControls( camera, container );
+
+    }
+
+    function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+    }
+
+    //
+
+    function animate() {
+
+        requestAnimationFrame( animate );
+
+        render();
+        stats.update();
+
+    }
+
+    function render() {
+
+
+        renderer.render( scene, camera );
+
+    }
+
+</script>
+
+</body>
+</html>
