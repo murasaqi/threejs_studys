@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>three.js webgl - mirror</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            color: #888888;
+            font-family:Monospace;
+            font-size:13px;
+
+            background-color: #000;
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        #info {
+            position: absolute;
+            top: 0px;
+            width: 200px;
+            left: calc(50% - 100px);
+            text-align: center;
+        }
+
+        a {
+            color: #00f;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script src="./js/three.js"></script>
+<script src="./js/perlin.js"></script>
+<script src="./js/OrbitControls.js"></script>
+
+<script>
+
+    // scene size
+    var WIDTH = window.innerWidth;
+    var HEIGHT = window.innerHeight;
+    var preSec,timer_end,timer,timer_roop;
+
+    // camera
+    var VIEW_ANGLE = 45;
+    var ASPECT = WIDTH / HEIGHT;
+    var NEAR = 1;
+    var FAR = 2000;
+    var planeGeo;
+    var vertex;
+
+
+    var camera, scene, renderer;
+
+    var cameraControls;
+
+    var verticalMirror, groundMirror;
+    var sphereGroup, smallSphere;
+    var noiseseed;
+
+
+    var mainLight,greenLight,redLight,blueLight;
+
+    function init() {
+
+        noiseseed = [];
+        timer_end = Math.PI;
+        timer = 0.0;
+        timer_roop = 0.0;
+
+        // renderer
+        renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( WIDTH, HEIGHT );
+
+        // scene
+        scene = new THREE.Scene();
+        scene.fog = new THREE.Fog(0x000000,1,2000);
+
+        // camera
+        camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+        camera.position.set( 0, 75, 160 );
+
+        cameraControls = new THREE.OrbitControls(camera, renderer.domElement);
+        cameraControls.target.set( 0, 40, 0);
+        cameraControls.maxDistance = 400;
+        cameraControls.minDistance = 10;
+        cameraControls.update();
+
+        var container = document.getElementById( 'container' );
+        container.appendChild( renderer.domElement );
+
+
+
+    }
+
+    function fillScene() {
+
+        planeGeo = new THREE.PlaneBufferGeometry( 2000.1, 2000.1 ,20,20);
+        var wirematerial = new THREE.MeshPhongMaterial({
+            color:0xffffff,
+            wireframe: true
+        });
+
+
+        vertex = planeGeo.attributes.position.array;
+        for(var i = 0; i < vertex.length; i+=3)
+        {
+            noiseseed.push({x:vertex[i],y:vertex[i+1],z:vertex[i+2]})
+        }
+        console.log(noiseseed);
+
+        var cubemapmaterial = new THREE.MeshPhongMaterial({
+            color: 0x000000,
+            Shading:THREE.FlatShading
+            //envMap: scene.background
+            //camera.getTexture()
+        })
+
+        var gournd = new THREE.Mesh( planeGeo, cubemapmaterial );
+        //mirrorMesh.add( groundMirror );
+        gournd.rotateX( - Math.PI / 2 );
+        gournd.position.z = -700;
+        scene.add( gournd );
+
+        var upper = new THREE.Mesh(planeGeo,cubemapmaterial);
+        upper.rotateX(Math.PI/2);
+        upper.position.y = 150;
+        upper.position.z = -700;
+        scene.add(upper);
+
+
+        var upperWire = new THREE.Mesh(planeGeo,wirematerial);
+        upperWire.rotateX(Math.PI/2);
+        upperWire.position.y = 150;
+        upperWire.position.z = -700;
+        scene.add(upperWire);
+
+
+        var wireMesh = new THREE.Mesh(planeGeo,wirematerial);
+        wireMesh.rotateX( - Math.PI / 2 );
+        wireMesh.position.y = 1;
+        wireMesh.position.z = -700;
+
+
+
+
+        var dLight00 = new THREE.DirectionalLight(0xcccccc,0.5);
+        dLight00.position.set(0,1,0);
+        scene.add(dLight00);
+
+        var dLight01 = new THREE.DirectionalLight(0xcccccc,0.5);
+        dLight01.position.set(0,-1,0);
+        scene.add(dLight01);
+
+
+        // lights
+        mainLight = new THREE.PointLight( 0xcccccc, 0.3, 250 );
+        mainLight.position.y = 60;
+        scene.add( mainLight );
+
+
+        greenLight = new THREE.PointLight( 0x00ff00, 0.25, 1000 );
+        greenLight.position.set( 550, 50, 0 );
+        scene.add( greenLight );
+
+        redLight = new THREE.PointLight( 0xff0000, 0.25, 1000 );
+        redLight.position.set( - 550, 50, 0 );
+        scene.add( redLight );
+
+        blueLight = new THREE.PointLight( 0x7f7fff, 0.25, 1000 );
+        blueLight.position.set( 0, 50, 550 );
+        scene.add( blueLight );
+
+        scene.add(wireMesh);
+    }
+
+    function render() {
+
+        //groundMirror.renderWithMirror( verticalMirror );
+        renderer.render(scene, camera);
+
+    }
+
+    function update() {
+
+        requestAnimationFrame( update );
+        var date = new Date();
+        timer_roop += 0.03;
+
+
+        if(preSec != date.getSeconds()){
+            timer = 0.0;
+
+            for(var i = 0; i < noiseseed.length; i++)
+            {
+                noiseseed[i].x += 0.1;
+                noiseseed[i].y += 0.3;
+                noiseseed[i].z += 0.1;
+
+            }
+
+        }
+
+
+        //var timer = Date.now() * 0.001;
+        timer += (timer_end - timer) *0.1;
+        //timer++;
+        console.log(timer_end);
+//        sphereGroup.rotation.y -= 0.002;
+
+//        smallSphere.position.set(
+//                Math.cos( timer * 0.1 ) * 30,
+//                Math.abs( Math.cos( timer * 0.2 ) ) * 20 + 5,
+//                Math.sin( timer * 0.1 ) * 30
+//        );
+//        smallSphere.rotation.y = ( Math.PI / 2 ) - timer * 0.1;
+//        smallSphere.rotation.z = timer * 0.8;
+
+
+        planeGeo.dynamic = true;
+        for(var i = 0; i < planeGeo.attributes.position.array.length; i+=3)
+        {
+//
+            var value = noise.perlin3(noiseseed[i/3].x, this.noiseseed[i/3].y,noiseseed[i/3].z) * 70;
+
+
+            planeGeo.attributes.position.array[i+2] = Math.abs( value * Math.sin(timer));
+        }
+
+        planeGeo.attributes.position.needsUpdate = true;
+
+        mainLight.position.x = 500 * Math.cos(timer_roop);
+        mainLight.position.z = -800+500 * Math.sin(timer_roop);
+
+
+        redLight.position.x = 450 * Math.cos(timer_roop);
+        redLight.position.z = -800+450 * Math.sin(timer_roop);
+
+        blueLight.position.x = 430 * Math.cos(timer_roop);
+        blueLight.position.z = -800+430 * Math.sin(timer_roop);
+
+        preSec = date.getSeconds();
+
+        render();
+    }
+
+    init();
+    fillScene();
+    update();
+
+
+</script>
+</body>
+</html>

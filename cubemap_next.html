@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>three.js webgl - materials - dynamic cube reflection</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            background-color: #000000;
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        #info {
+            position: absolute;
+            top: 0px; width: 100%;
+            color: #ffffff;
+            padding: 5px;
+            font-family:Monospace;
+            font-size:13px;
+            font-weight: bold;
+            text-align:center;
+        }
+
+        a {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="info"><a href="http://threejs.org" target="_blank">three.js webgl</a> - materials - dynamic cube reflection<br/>Photo by <a href="http://www.flickr.com/photos/jonragnarsson/2294472375/" target="_blank">J&oacute;n Ragnarsson</a>.</div>
+
+<script src="./js/three.js"></script>
+<script src="js/stats.min.js"></script>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+    uniform float time;
+
+
+    void main()
+    {
+        vec3 posChanged = position;
+        //posChanged.x = posChanged.x*(abs(sin(time*1.0)));
+        //posChanged.y = posChanged.y*(abs(cos(time*1.0)));
+        //posChanged.z = posChanged.z*(abs(sin(time*1.0)));
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+
+        //gl_Position = projectionMatrix * modelViewMatrix * vec4(posChanged,1.0);
+
+    }
+
+</script>
+
+<script id="fragment-shader-1" type="x-shader/x-fragment">
+    precision highp float;
+    uniform float time;
+    uniform float alpha;
+    uniform vec2 resolution;
+    varying vec2 vUv;
+
+    #define pi2_inv 0.159154943091895335768883763372
+    void main( void )
+{
+	vec2 uv =  ((gl_FragCoord.xy - resolution*0.5) * 1.0) / (resolution.xy * 0.4);
+	uv.x *= resolution.x/resolution.y;
+	float color = cos(uv.y*uv.y+uv.x*uv.x - (time*0.3))* 10.0;
+	color = mod(color, 2.0)- cos(color);
+	color -= cos(color);
+	gl_FragColor = vec4( vec3( color, color,color), color );
+
+}
+
+
+</script>
+
+<script>
+
+    var camera, scene, renderer;
+    var cube, sphere, torus, material;
+    var meshMaterial1;
+    var mesh;
+    var cube2;
+
+    var count = 0, cubeCamera1, cubeCamera2;
+
+    var fov = 60,
+            isUserInteracting = false,
+            onMouseDownMouseX = 0, onMouseDownMouseY = 0,
+            lon = 0, onMouseDownLon = 0,
+            lat = 0, onMouseDownLat = 0,
+            phi = 0, theta = 0;
+
+    var textureLoader = new THREE.TextureLoader();
+
+    textureLoader.load( 'textures/sky04.jpg', function ( texture ) {
+
+        texture.mapping = THREE.UVMapping;
+
+        init( texture );
+        animate();
+
+    } );
+
+    function init( texture ) {
+
+        camera = new THREE.PerspectiveCamera( fov, window.innerWidth / window.innerHeight, 1, 3000 );
+
+        scene = new THREE.Scene();
+
+        var light1 = new THREE.DirectionalLight( 0xffffff, 0.9 );
+        light1.position.set( 1, 1, 1 );
+        scene.add( light1 );
+
+        var light1 = new THREE.DirectionalLight( 0xffffff, 0.9 );
+        light1.position.set( 1, -1, 1 );
+        scene.add( light1 );
+
+        var meshMaterial1 = createMaterial("vertex-shader", "fragment-shader-1");
+        var shadermaterial = new THREE.MeshFaceMaterial(
+                [meshMaterial1,
+                    new THREE.MeshLambertMaterial({color:0xffffff}),
+                    new THREE.MeshLambertMaterial({color:0xffffff}),
+                    new THREE.MeshLambertMaterial({color:0xffffff}),
+                    new THREE.MeshLambertMaterial({color:0xffffff}),
+                    new THREE.MeshLambertMaterial({color:0xffffff})]);
+
+        var shadermaterial2 = new THREE.MeshFaceMaterial(
+                [
+                    new THREE.MeshLambertMaterial({color:0xffffff}),
+                    meshMaterial1,
+                    new THREE.MeshLambertMaterial({color:0xffffff}),
+                    new THREE.MeshLambertMaterial({color:0xffffff}),
+
+                    new THREE.MeshLambertMaterial({color:0xffffff}),
+
+                    new THREE.MeshLambertMaterial({color:0xffffff})
+
+                ]);
+
+        mesh = new THREE.Mesh( new THREE.SphereGeometry( 500, 32, 16 ), new THREE.MeshBasicMaterial( { map: texture } ) );
+        mesh.scale.x = -1;
+        //scene.add( mesh );
+
+        renderer = new THREE.WebGLRenderer( { antialias: true } );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+
+        document.body.appendChild( renderer.domElement );
+
+        //
+
+        material = new THREE.MeshPhongMaterial( {
+            color:0xCC99FF
+        } );
+
+
+        var height = 70;
+        var width = 5;
+        cube = new THREE.Mesh( new THREE.BoxGeometry( width, height, height ), shadermaterial );
+        cube.position.set(0,0,0);
+        scene.add( cube );
+
+
+        cube2 = new THREE.Mesh( new THREE.BoxGeometry( width, height, height ), shadermaterial2 );
+        cube.position.set(0,0,0);
+        scene.add( cube2 );
+
+        lon = 90;
+        fov = 100.0;
+
+        camera.projectionMatrix.makePerspective( fov, window.innerWidth / window.innerHeight, 1, 1100 );
+
+        //
+
+        document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+        document.addEventListener( 'wheel', onDocumentMouseWheel, false );
+
+        window.addEventListener( 'resize', onWindowResized, false );
+
+        onWindowResized( null );
+
+        //console.log(cube.material);
+
+    }
+
+    function onWindowResized( event ) {
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        camera.projectionMatrix.makePerspective( fov, window.innerWidth / window.innerHeight, 1, 1100 );
+    }
+
+    function onDocumentMouseDown( event ) {
+
+        event.preventDefault();
+
+        onPointerDownPointerX = event.clientX;
+        onPointerDownPointerY = event.clientY;
+
+        onPointerDownLon = lon;
+        onPointerDownLat = lat;
+
+        document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+        document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+
+    }
+
+    function onDocumentMouseMove( event ) {
+
+        lon = ( event.clientX - onPointerDownPointerX ) * 0.1 + onPointerDownLon;
+        lat = ( event.clientY - onPointerDownPointerY ) * 0.1 + onPointerDownLat;
+
+    }
+
+    function onDocumentMouseUp( event ) {
+        document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+        document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+
+    }
+
+    function onDocumentMouseWheel( event ) {
+
+        fov += event.deltaY * 0.05;
+        console.log(fov);
+
+        camera.projectionMatrix.makePerspective( fov, window.innerWidth / window.innerHeight, 1, 1100 );
+
+    }
+
+    function animate() {
+
+        requestAnimationFrame( animate );
+        render();
+
+    }
+
+    function render() {
+
+        var time = Date.now();
+
+        //lon += .15;
+
+
+        lon = 90;
+
+        lat = Math.max( - 85, Math.min( 85, lat ) );
+        phi = THREE.Math.degToRad( 90 - lat );
+        theta = THREE.Math.degToRad( lon );
+        cube.material.materials[0].uniforms.time.value += 0.01;
+
+        cube.position.x = -100;
+        cube2.position.x = 100;
+
+
+//        cube.position.y = Math.sin( time * 0.001 ) * 30;
+//        cube.position.z = Math.sin( time * 0.001 ) * 30;
+//
+//        cube.rotation.x += 0.02;
+//        cube.rotation.y += 0.03;
+//
+//        torus.position.x = Math.cos( time * 0.001 + 10 ) * 30;
+//        torus.position.y = Math.sin( time * 0.001 + 10 ) * 30;
+//        torus.position.z = Math.sin( time * 0.001 + 10 ) * 30;
+//
+//        torus.rotation.x += 0.02;
+//        torus.rotation.y += 0.03;
+
+        mesh.rotation.y += 0.004;
+        mesh.rotation.x += 0.004;
+
+        camera.position.x = 100 * Math.sin( phi ) * Math.cos( theta );
+        camera.position.y = 100 * Math.cos( phi );
+        camera.position.z = 100 * Math.sin( phi ) * Math.sin( theta );
+
+        camera.lookAt( scene.position );
+
+
+
+
+
+        count ++;
+
+
+        renderer.render( scene, camera );
+
+    }
+
+
+    function createSpotlight( color ) {
+
+        var newObj = new THREE.SpotLight( color, 2 );
+
+        newObj.castShadow = true;
+        newObj.angle = 0.3;
+        newObj.penumbra = 0.2;
+        newObj.decay = 2;
+        newObj.distance = 50;
+
+        newObj.shadow.mapSize.width = 1024;
+        newObj.shadow.mapSize.height = 1024;
+
+        return newObj;
+
+    }
+
+
+
+
+
+
+    function createMaterial(vertexShader, fragmentShader) {
+        var vertShader = document.getElementById(vertexShader).innerHTML;
+        var fragShader = document.getElementById(fragmentShader).innerHTML;
+
+        var uniforms = {
+            time: {type: 'f', value: 0.2},
+            scale: {type: 'f', value: 0.2},
+            alpha: {type: 'f', value: 0.6},
+            resolution: {type: "v2", value: new THREE.Vector2()}
+        };
+
+        uniforms.resolution.value.x = window.innerWidth;
+        uniforms.resolution.value.y = window.innerHeight;
+
+        var meshMaterial = new THREE.ShaderMaterial({
+            uniforms: uniforms,
+            vertexShader: vertShader,
+            fragmentShader: fragShader,
+            transparent: true
+
+        });
+
+
+        return meshMaterial;
+    }
+
+</script>
+
+</body>
+</html>

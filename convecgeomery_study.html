@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>three.js webgl - convex geometry</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            font-family: Monospace;
+            background-color: #000;
+            margin: 0px;
+            overflow: hidden;
+        }
+        #info {
+            position: absolute;
+            color: #fff;
+            top: 0px;
+            width: 100%;
+            padding: 5px;
+            text-align:center;
+        }
+        a {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="info"><a href="http://threejs.org" target="_blank">three.js</a> - ConvexGeometry</div>
+
+<script src="js/three.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/ConvexGeometry.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/stats.min.js"></script>
+
+
+<script>
+
+    if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+    var group, camera, scene, renderer;
+    var fov = -60;
+    init();
+    animate();
+
+
+
+    var mousex,mousey;
+    function init() {
+
+        var settings = {
+            metalness: 1.0,
+            roughness: 0.4,
+            ambientIntensity: 0.2,
+            aoMapIntensity: 1.0,
+            envMapIntensity: 1.0,
+            displacementScale: 50.436143, // from original model
+            normalScale: 50.0
+        };
+
+
+        scene = new THREE.Scene();
+
+        renderer = new THREE.WebGLRenderer( { antialias: true } );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        document.body.appendChild( renderer.domElement );
+
+        //scene.fog = new THREE.Fog(0xa6969e,1,500);;
+
+        // camera
+        camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, -10000 );
+        camera.position.set( 15, 0, 500 );
+
+        //camera.lookAt = THREE.Vector3(0,0,0);
+        scene.add( camera );
+
+        // controls
+        controls = new THREE.OrbitControls( camera, renderer.domElement );
+//        controls.minDistance = 20;
+//        controls.maxDistance = 50;
+//        controls.maxPolarAngle = Math.PI / 2;
+
+        //scene.add( new THREE.AmbientLight( 0x222222 ) );
+
+        var light = new THREE.PointLight( 0xffffff, 0.6 );
+        light.position.set(0,800,0);
+        //camera.add( light );
+
+        var dlight = new THREE.DirectionalLight(0xffffff,0.8);
+        dlight.position.set(0, 1, 0).normalize();
+        scene.add( dlight );
+
+        var dlight02 = new THREE.DirectionalLight(0xffffff,0.8);
+        dlight02.position.set(0, 1, 1).normalize();
+        scene.add( dlight02 );
+
+        scene.add( new THREE.AxisHelper( 20 ) );
+        //
+
+        var loader = new THREE.TextureLoader();
+        var texture = loader.load( 'textures/sprites/disc.png' );
+
+        group = new THREE.Group();
+        scene.add( group );
+
+        // points
+
+        var pointsGeometry = new THREE.DodecahedronGeometry( 20 );
+        //THREE.DodecahedronGeometry()
+        console.log(pointsGeometry.vertices.length);
+        for ( var i = 0; i < pointsGeometry.vertices.length; i ++ ) {
+
+
+            // こんな感じで頂点の情報を上書きするっぽい
+            pointsGeometry.vertices[ i ].add( randomPoint().multiplyScalar( 2 ) );
+            // wiggle the points
+
+        }
+
+
+
+        // convex hull
+
+        var meshMaterial = new THREE.MeshPhongMaterial( {
+            color: 0xffffff,
+            //opacity: 0.5,
+            transparent: true,
+            shading:THREE.FlatShading
+            //shiness:200
+        } );
+
+//        var meshGeometry = new THREE.ConvexGeometry( pointsGeometry.vertices );
+//
+//        mesh = new THREE.Mesh( meshGeometry, meshMaterial );
+//        mesh.material.side = THREE.BackSide; // back faces
+//        mesh.renderOrder = 0;
+//        mesh.position.set(0,0,0);
+//        group.add( mesh );
+
+        for(var i = 0; i < 20; i++)
+        {
+            var cvMesh = createConvexMesh(40,160,40,meshMaterial);
+            var pos = randomPoint();
+            cvMesh.position.set(pos.x*600,pos.y*400+100,pos.z*100);
+            //scene.add(cvMesh);
+
+        }
+
+        var textureLoader = new THREE.TextureLoader();
+        var bumpmap = textureLoader.load( "textures/testmap.png" );
+        var displacementMap = textureLoader.load( "textures/terrainmap04.png" );
+        var normalmap = textureLoader.load( "textures/terrainnormalmap04.png" );
+        //console.log(displacementMap);
+
+        var plane = new THREE.PlaneGeometry(200,200,50,50);
+
+        var planematerial = new THREE.MeshStandardMaterial({
+            color: 0xffffff,
+            //bumpMap:bumpmap,
+            //normalMap:normalmap
+
+            //side:THREE.DoubleSide,
+//            roughness: settings.roughness,
+//            metalness: settings.metalness,
+            shading:THREE.FlatShading,
+            side:THREE.DoubleSide,
+            displacementMap: displacementMap,
+            displacementScale: settings.displacementScale,
+            displacementBias: - 0.428408, // from original model
+            normalMap:normalmap,
+            normalScale: new THREE.Vector2( 1, -1 ), // why does the normal map require negation in this case?
+
+        });
+
+        var planewirematerial = new THREE.MeshStandardMaterial({
+            color: 0x000000,
+            //bumpMap:bumpmap,
+            //normalMap:normalmap
+
+            //side:THREE.DoubleSide,
+//            roughness: settings.roughness,
+//            metalness: settings.metalness,
+
+            side:THREE.DoubleSide,
+            displacementMap: displacementMap,
+            displacementScale: settings.displacementScale,
+            displacementBias: - 0.428408, // from original model
+            normalMap:normalmap,
+            wireframe:true,
+            normalScale: new THREE.Vector2( 1, -1 ), // why does the normal map require negation in this case?
+
+        });
+        bumpmap.needsUpdate = true;
+
+
+        var displacementMesh = new THREE.Mesh(plane,planematerial);
+        displacementMesh.rotateX(-Math.PI/2);
+        scene.add(displacementMesh);
+
+
+        var displacementwireMesh = new THREE.Mesh(plane,planewirematerial);
+        displacementwireMesh.rotateX(-Math.PI/2);
+        displacementwireMesh.position.y = 0.1;
+        scene.add(displacementwireMesh);
+
+
+
+
+        window.addEventListener( 'resize', onWindowResize, false );
+        //document.addEventListener( 'wheel', onDocumentMouseWheel, false );
+        document.addEventListener("mousemove" , MouseMoveFunc);
+        camera.projectionMatrix.makePerspective( 100, window.innerWidth / window.innerHeight, 1, 1100 );
+
+
+    }
+//
+//    function onDocumentMouseWheel( e ) {
+//
+//        fov += event.deltaY * 0.05;
+//
+//        camera.projectionMatrix.makePerspective( fov, window.innerWidth / window.innerHeight, 1, 1100 );
+//
+//    }
+
+    function createConvexMesh( width, height, depth, material)
+    {
+        var points = [];
+        for (var i = 0; i < 20; i++)
+        {
+            var randomX = -width/2 + Math.round(Math.random()*width);
+            var randomY = -height/2 + Math.round(Math.random()*height);
+            var randomZ = -depth/2 + Math.round(Math.random()*depth);
+            points.push(new THREE.Vector3(randomX,randomY,randomZ));
+        }
+
+        var cvGeo = new THREE.ConvexGeometry(points);
+        var cvMesh = new THREE.Mesh(cvGeo,material);
+
+        return cvMesh;
+
+    }
+
+    function MouseMoveFunc(e){
+
+        // クライアント座標系を基点としたマウスカーソルの座標を取得
+        mousex = e.clientX;
+        mousey = e.clientY;
+
+        // 出力テスト
+        console.log("x:" + mousex);
+        console.log("y:" + mousey);
+    }
+
+
+    function randomPoint() {
+
+        return new THREE.Vector3( THREE.Math.randFloat( - 1, 1 ), THREE.Math.randFloat( - 1, 1 ), THREE.Math.randFloat( - 1, 1 ) );
+
+    }
+
+    function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+    }
+
+    function animate() {
+
+        requestAnimationFrame( animate );
+
+        //group.rotation.y += 0.005;
+
+        render();
+
+    }
+
+    function render() {
+
+        renderer.render( scene, camera );
+
+    }
+
+</script>
+
+</body>
+</html>
