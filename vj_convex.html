@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>three.js webgl - convex geometry</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            font-family: Monospace;
+            background-color: #fff;
+            margin: 0px;
+            overflow: hidden;
+        }
+        #info {
+            position: absolute;
+            color: #fff;
+            top: 0px;
+            width: 100%;
+            padding: 5px;
+            text-align:center;
+        }
+        a {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<script src="./js/perlin.js"></script>
+<script src="js/three.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/ConvexGeometry.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/stats.min.js"></script>
+<script src="js/dat.gui.min.js"></script>
+
+
+<script>
+
+    if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+    var group, camera, scene, renderer;
+    var convexmeshs,convexwiremeshs;
+    var milliseconds;
+    var plane,planegeomery;
+    var fov = -60;
+
+    var timer,timer_end;
+    var pre_sec;
+    init();
+    animate();
+    var lightHelpers;
+    var noiseseed;
+    var planevertex;
+    var convexRotationValues;
+    var clearColor;
+
+
+
+    var mousex,mousey;
+    function init() {
+
+        noiseseed = [];
+        milliseconds = 0.0;
+
+        var settings = {
+            metalness: 1.0,
+            roughness: 0.4,
+            ambientIntensity: 0.2,
+            aoMapIntensity: 1.0,
+            envMapIntensity: 1.0,
+            displacementScale: 100.436143, // from original model
+            normalScale: 1.0
+        };
+
+        clearColor = 0x7d7c7e;
+        convexmeshs = [];
+        convexwiremeshs = [];
+        convexRotationValues = [];
+        timer = 0.0;
+        timer_end= Math.PI;
+
+
+        scene = new THREE.Scene();
+
+        var dlight = new THREE.DirectionalLight(0xffffff,1.0);
+        dlight.position.set(0,1,0);
+        dlight.castShadow = true;
+        scene.add(new THREE.DirectionalLightHelper(dlight,7));
+        scene.add(dlight);
+
+        var dlight02 = new THREE.DirectionalLight(0xffffff,1.0);
+        dlight02.position.set(0,1,1);
+        dlight02.castShadow = true;
+        scene.add(new THREE.DirectionalLightHelper(dlight02,7));
+        scene.add(dlight02);
+
+        var pointlight = new THREE.PointLight(0xffffff,0.8,100,2);
+        pointlight.position.set(0,100,0);
+        pointlight.castShadow = true;
+        scene.add(pointlight);
+
+
+
+
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        document.body.appendChild( renderer.domElement );
+        renderer.setClearColor(clearColor);
+        scene.fog = new THREE.Fog(clearColor,0,1300);
+
+        // camera
+        camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
+        camera.position.set( 0, 10, 150 );
+
+
+        cameraControls = new THREE.OrbitControls(camera, renderer.domElement);
+
+        camera.lookAt(new THREE.Vector3(0,80,0));
+
+        //camera.lookAt = new THREE.Vector3(0,0,0);
+        scene.add( camera );
+
+        var controls = new function () {
+//            this.rotationSpeed = 0.03;
+//            this.bouncingSpeed = 0.03;
+//            this.ambientColor = 0xffffff;
+//            this.pointColor = 0xffffff;
+//            this.intensity = 1;
+//            this.distance = 100;
+//            this.decay = 1;
+            this.clearColor = clearColor;
+            this.fog = clearColor;
+        };
+
+        var gui = new dat.GUI();
+        gui.addColor(controls, 'clearColor').onChange(function (e) {
+            renderer.setClearColor(e);// = new THREE.Color(e);
+            scene.fog = new THREE.Fog(new THREE.Color(e),0,1300);
+
+        });
+
+//        gui.addColor(controls,'fog').onChange(function (e){
+//            scene.fog = new THREE.Fog(new THREE.Color(e),0,1300);
+//            //scene.fog.color = e;
+//        });
+
+//        gui.addColor(controls, 'pointColor').onChange(function (e) {
+//            pointLight.color = new THREE.Color(e);
+//        });
+//
+//        gui.add(controls, 'intensity', 0, 3).onChange(function (e) {
+//            pointLight.intensity = e;
+//        });
+//
+//        gui.add(controls, 'distance', 0, 100).onChange(function (e) {
+//            pointLight.distance = e;
+//        });
+//
+//        gui.add(controls, 'decay', 1, 100).onChange(function (e) {
+//            pointLight.decay = e;
+//        });
+
+
+
+
+
+        // convex hull
+
+        var meshMaterial = new THREE.MeshPhongMaterial( {
+            color: 0x3b373e,
+            shading:THREE.FlatShading,
+            //shiness:200
+            //wireframe:true
+            specular: 0xffffff,
+            shininess: 150
+        } );
+
+        var meshwireMaterial = new THREE.MeshBasicMaterial( {
+            color: 0xffffff,
+            transparent:true,
+            opacity: 0,
+            wireframe:true,
+            wireframeLinewidth:2
+        } );
+
+        for(var i = 0; i < 30; i++)
+        {
+            meshMaterial.wireframe = false;
+            var cvMesh = createConvexMesh(20,80,20,meshMaterial);
+            var pos = randomPoint();
+            cvMesh.position.set(pos.x*200,pos.y*800,pos.z*200-200);
+            cvMesh.castShadow = true;
+            convexmeshs.push(cvMesh);
+            convexmeshs.castShadow = true;
+            scene.add(cvMesh);
+
+
+            var cvwireMesh = cvMesh.clone();
+            cvwireMesh.material = meshwireMaterial;
+            cvwireMesh.position = cvMesh.position;
+            convexwiremeshs.push(cvwireMesh);
+            //scene.add(cvwireMesh);
+
+            convexRotationValues.push({x:Math.random()*2-1,y:Math.random()*2-1,z:Math.random()*2-1,})
+
+
+
+        }
+
+
+
+
+        window.addEventListener( 'resize', onWindowResize, false );
+
+    }
+    function createConvexMesh( width, height, depth, material)
+    {
+        var points = [];
+        for (var i = 0; i < 40; i++)
+        {
+            var randomX = -width/2 + Math.round(Math.random()*width);
+            var randomY = -height/2 + Math.round(Math.random()*height);
+            var randomZ = -depth/2 + Math.round(Math.random()*depth);
+            points.push(new THREE.Vector3(randomX,randomY,randomZ));
+        }
+
+        var cvGeo = new THREE.ConvexGeometry(points);
+        var cvMesh = new THREE.Mesh(cvGeo,material);
+
+        return cvMesh;
+
+    }
+
+
+
+    function randomPoint() {
+
+        return new THREE.Vector3( THREE.Math.randFloat( - 1, 1 ), THREE.Math.randFloat( - 1, 1 ), THREE.Math.randFloat( - 1, 1 ) );
+
+    }
+
+    function onWindowResize() {
+
+
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+
+
+
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+    }
+
+    function animate() {
+
+        var date = new Date();
+        requestAnimationFrame( animate );
+
+        if(pre_sec != date.getSeconds()){
+            timer = 0.0;
+
+            for(var i = 0; i < noiseseed.length; i++)
+            {
+                noiseseed[i].x += 0.1;
+                noiseseed[i].y += 0.3;
+                noiseseed[i].z += 0.1;
+
+            }
+
+        }
+
+        timer += (timer_end - timer) *0.1;
+
+        for(var i = 0; i < convexmeshs.length; i++)
+        {
+            convexmeshs[i].rotation.y+=Math.sin(timer)*0.1;
+            convexmeshs[i].position.y += Math.sin(timer)*8+1;
+            convexwiremeshs[i].rotation.y = convexmeshs[i].rotation.y;
+            convexwiremeshs[i].position.y = convexmeshs[i].position.y;
+
+            convexmeshs[i].rotation.x +=convexRotationValues[i].x*0.01;
+            convexwiremeshs[i].rotation.x +=convexRotationValues[i].x*0.01;
+
+            convexmeshs[i].rotation.z+=convexRotationValues[i].z*0.01;
+            convexwiremeshs[i].rotation.z+=convexRotationValues[i].z*0.01;
+
+            if(convexmeshs[i].position.y > 800)
+            {
+                convexmeshs[i].position.y = -50;
+                convexwiremeshs[i].position.y = -50;
+            }
+
+        }
+
+
+
+        pre_sec = date.getSeconds();
+
+        render();
+
+    }
+
+    function render() {
+
+        renderer.render( scene, camera );
+
+    }
+
+</script>
+
+</body>
+</html>

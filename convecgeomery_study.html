@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Monospace;
-            background-color: #000;
+            background-color: #fff;
             margin: 0px;
             overflow: hidden;
         }
@@ -27,8 +27,7 @@
 </head>
 <body>
 
-<div id="info"><a href="http://threejs.org" target="_blank">three.js</a> - ConvexGeometry</div>
-
+<script src="./js/perlin.js"></script>
 <script src="js/three.js"></script>
 <script src="js/OrbitControls.js"></script>
 <script src="js/ConvexGeometry.js"></script>
@@ -41,14 +40,27 @@
     if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
     var group, camera, scene, renderer;
+    var convexmeshs,convexwiremeshs;
+    var milliseconds;
+    var plane,planegeomery;
     var fov = -60;
+
+    var timer,timer_end;
+    var pre_sec;
     init();
     animate();
+    var lightHelpers;
+    var noiseseed;
+    var planevertex;
+    var convexRotationValues;
 
 
 
     var mousex,mousey;
     function init() {
+
+        noiseseed = [];
+        milliseconds = 0.0;
 
         var settings = {
             metalness: 1.0,
@@ -56,49 +68,94 @@
             ambientIntensity: 0.2,
             aoMapIntensity: 1.0,
             envMapIntensity: 1.0,
-            displacementScale: 50.436143, // from original model
-            normalScale: 50.0
+            displacementScale: 100.436143, // from original model
+            normalScale: 1.0
         };
+
+        convexmeshs = [];
+        convexwiremeshs = [];
+        convexRotationValues = [];
+        timer = 0.0;
+        timer_end= Math.PI;
 
 
         scene = new THREE.Scene();
 
-        renderer = new THREE.WebGLRenderer( { antialias: true } );
+
+        renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( window.innerWidth, window.innerHeight );
         document.body.appendChild( renderer.domElement );
 
-        //scene.fog = new THREE.Fog(0xa6969e,1,500);;
+        //scene.fog = new THREE.Fog(0xffffff*Math.random(),-200,700);;
+        //renderer.clearColor(new THREE.Color(255,255,255));
+        //renderer.setClearColor( 0xffffff, 0.5 );
 
         // camera
-        camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, -10000 );
-        camera.position.set( 15, 0, 500 );
+        camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
+        camera.position.set( 0, 10, 150 );
 
-        //camera.lookAt = THREE.Vector3(0,0,0);
+
+        cameraControls = new THREE.OrbitControls(camera, renderer.domElement);
+
+       camera.lookAt(new THREE.Vector3(0,80,0));
+
+        //camera.lookAt = new THREE.Vector3(0,0,0);
         scene.add( camera );
 
-        // controls
-        controls = new THREE.OrbitControls( camera, renderer.domElement );
-//        controls.minDistance = 20;
-//        controls.maxDistance = 50;
-//        controls.maxPolarAngle = Math.PI / 2;
-
-        //scene.add( new THREE.AmbientLight( 0x222222 ) );
 
         var light = new THREE.PointLight( 0xffffff, 0.6 );
         light.position.set(0,800,0);
-        //camera.add( light );
+        scene.add( light );
 
-        var dlight = new THREE.DirectionalLight(0xffffff,0.8);
-        dlight.position.set(0, 1, 0).normalize();
+        var lightHelper;
+
+
+        var point = new THREE.SphereGeometry(1,5,5);
+        var pointmaterial = new THREE.MeshBasicMaterial({color:0xaaaaaa});
+        var pointmesh = new THREE.Mesh(point,pointmaterial);
+        pointmesh.position.set(0,0,-100);
+        scene.add(pointmesh);
+
+        var spotLight = new THREE.SpotLight( 0xffffff, 1.0 );
+        spotLight.position.set(0,500,-700);
+        spotLight.angle = Math.PI/4;
+        spotLight.distance = 1000;
+        spotLight.target = pointmesh;
+        //scene.add( spotLight );
+        lightHelper = new THREE.SpotLightHelper( spotLight );
+        scene.add(lightHelper);
+//
+        var dlight = new THREE.DirectionalLight(0xffffff,1.0);
+        dlight.position.set(1, 1, 1).normalize();
         scene.add( dlight );
 
-        var dlight02 = new THREE.DirectionalLight(0xffffff,0.8);
-        dlight02.position.set(0, 1, 1).normalize();
-        scene.add( dlight02 );
-
-        scene.add( new THREE.AxisHelper( 20 ) );
+//        var dlight02 = new THREE.DirectionalLight(0xffffff,0.8);
+//        dlight02.position.set(0, 1, 1).normalize();
+//        scene.add( dlight02 );
+//        scene.add( new THREE.AxisHelper( 20 ) );
         //
+
+        var spotLight01 = new THREE.SpotLight( 0x00fff6, 1.0 );
+        spotLight01.position.set(200,300,-100);
+        spotLight01.angle = 0.5;
+        spotLight01.distance = 500;
+        scene.add(spotLight01);
+        lightHelper = new THREE.SpotLightHelper( spotLight01 );
+        scene.add(lightHelper);
+
+        var spotLight02 = new THREE.SpotLight( 0xff580d, 1.0 );
+        spotLight02.position.set(-200,300,-100);
+        spotLight02.distance = 500;
+        spotLight02.angle = 0.5;
+        scene.add(spotLight02);
+
+        lightHelper = new THREE.SpotLightHelper( spotLight02 );
+        scene.add(lightHelper);
+
+//        var pointlight = new THREE.PointLight(0x0000,1.0);
+//        pointlight.position.set(0,300,0);
+//        scene.add(pointlight);
 
         var loader = new THREE.TextureLoader();
         var texture = loader.load( 'textures/sprites/disc.png' );
@@ -125,11 +182,21 @@
         // convex hull
 
         var meshMaterial = new THREE.MeshPhongMaterial( {
-            color: 0xffffff,
-            //opacity: 0.5,
+            color: 0x000000*0.4,
+            transparent:true,
+            //opacity: 0.7,
             transparent: true,
-            shading:THREE.FlatShading
+            shading:THREE.FlatShading,
             //shiness:200
+            //wireframe:true
+        } );
+
+        var meshwireMaterial = new THREE.MeshBasicMaterial( {
+            color: 0xffffff,
+            transparent:true,
+            opacity: 0,
+            wireframe:true,
+            wireframeLinewidth:2
         } );
 
 //        var meshGeometry = new THREE.ConvexGeometry( pointsGeometry.vertices );
@@ -142,55 +209,64 @@
 
         for(var i = 0; i < 20; i++)
         {
-            var cvMesh = createConvexMesh(40,160,40,meshMaterial);
+            meshMaterial.wireframe = false;
+            var cvMesh = createConvexMesh(20,80,20,meshMaterial);
             var pos = randomPoint();
-            cvMesh.position.set(pos.x*600,pos.y*400+100,pos.z*100);
-            //scene.add(cvMesh);
+            cvMesh.position.set(pos.x*300,pos.y*200,pos.z*300-300);
+            convexmeshs.push(cvMesh);
+            convexmeshs.castShadow = true;
+            scene.add(cvMesh);
+
+
+            var cvwireMesh = cvMesh.clone();
+            cvwireMesh.material = meshwireMaterial;
+            cvwireMesh.position = cvMesh.position;
+            convexwiremeshs.push(cvwireMesh);
+            scene.add(cvwireMesh);
+
+            convexRotationValues.push({x:Math.random()*2-1,y:Math.random()*2-1,z:Math.random()*2-1,})
+
+
 
         }
 
         var textureLoader = new THREE.TextureLoader();
         var bumpmap = textureLoader.load( "textures/testmap.png" );
-        var displacementMap = textureLoader.load( "textures/terrainmap04.png" );
-        var normalmap = textureLoader.load( "textures/terrainnormalmap04.png" );
+        var displacementMap = textureLoader.load( "textures/terrainmap07.png" );
+        var normalmap = textureLoader.load( "textures/terrainnormalmap07.png" );
+        var map = textureLoader.load( "textures/purpletexture02.png" );
+
         //console.log(displacementMap);
 
-        var plane = new THREE.PlaneGeometry(200,200,50,50);
+        plane = new THREE.PlaneBufferGeometry(300,300,20,20);
 
         var planematerial = new THREE.MeshStandardMaterial({
-            color: 0xffffff,
-            //bumpMap:bumpmap,
-            //normalMap:normalmap
-
-            //side:THREE.DoubleSide,
-//            roughness: settings.roughness,
-//            metalness: settings.metalness,
-            shading:THREE.FlatShading,
+            color: 0x000000,
+            //shading:THREE.FlatShading,
+//            transparent:true,
+//            opacity:1.0,
             side:THREE.DoubleSide,
             displacementMap: displacementMap,
             displacementScale: settings.displacementScale,
-            displacementBias: - 0.428408, // from original model
             normalMap:normalmap,
-            normalScale: new THREE.Vector2( 1, -1 ), // why does the normal map require negation in this case?
+            displacementBias: - 0.428408, // from original model
+            normalScale: new THREE.Vector2( 1, -1 ),
+            //map:map,
+
 
         });
 
-        var planewirematerial = new THREE.MeshStandardMaterial({
-            color: 0x000000,
-            //bumpMap:bumpmap,
-            //normalMap:normalmap
-
-            //side:THREE.DoubleSide,
-//            roughness: settings.roughness,
-//            metalness: settings.metalness,
-
-            side:THREE.DoubleSide,
+        var planewirematerial = new THREE.MeshPhongMaterial({
             displacementMap: displacementMap,
+            //color: 0x4a3d4f,
+            //color: 0xe97ef6,
+            color:0x000000,
             displacementScale: settings.displacementScale,
-            displacementBias: - 0.428408, // from original model
             normalMap:normalmap,
             wireframe:true,
-            normalScale: new THREE.Vector2( 1, -1 ), // why does the normal map require negation in this case?
+            transparent:true,
+            opacity:1.0
+
 
         });
         bumpmap.needsUpdate = true;
@@ -198,22 +274,35 @@
 
         var displacementMesh = new THREE.Mesh(plane,planematerial);
         displacementMesh.rotateX(-Math.PI/2);
+        displacementMesh.position.x = -20;
+        //displacementMesh.rotateZ(-Math.PI*0.1);
+
         scene.add(displacementMesh);
 
 
         var displacementwireMesh = new THREE.Mesh(plane,planewirematerial);
         displacementwireMesh.rotateX(-Math.PI/2);
-        displacementwireMesh.position.y = 0.1;
+        //displacementwireMesh.rotateZ(-Math.PI*0.1);
+        displacementwireMesh.position.y = 0;
+        displacementwireMesh.position.x = -20;
         scene.add(displacementwireMesh);
+
+
+        planevertex = plane.attributes.position.array;
+        for(var i = 0; i < planevertex.length; i+=3)
+        {
+            noiseseed.push({x:planevertex[i],y:planevertex[i+1],z:planevertex[i+2]})
+        }
 
 
 
 
         window.addEventListener( 'resize', onWindowResize, false );
         //document.addEventListener( 'wheel', onDocumentMouseWheel, false );
-        document.addEventListener("mousemove" , MouseMoveFunc);
-        camera.projectionMatrix.makePerspective( 100, window.innerWidth / window.innerHeight, 1, 1100 );
+        //document.addEventListener("mousemove" , MouseMoveFunc);
+        //camera.projectionMatrix.makePerspective( 100, window.innerWidth / window.innerHeight, 1, 1100 );
 
+        console.log(camera);
 
     }
 //
@@ -228,7 +317,7 @@
     function createConvexMesh( width, height, depth, material)
     {
         var points = [];
-        for (var i = 0; i < 20; i++)
+        for (var i = 0; i < 40; i++)
         {
             var randomX = -width/2 + Math.round(Math.random()*width);
             var randomY = -height/2 + Math.round(Math.random()*height);
@@ -250,8 +339,8 @@
         mousey = e.clientY;
 
         // 出力テスト
-        console.log("x:" + mousex);
-        console.log("y:" + mousey);
+//        console.log("x:" + mousex);
+//        console.log("y:" + mousey);
     }
 
 
@@ -263,8 +352,13 @@
 
     function onWindowResize() {
 
+
+
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
+
+
+
 
 
         renderer.setSize( window.innerWidth, window.innerHeight );
@@ -272,10 +366,70 @@
     }
 
     function animate() {
+        //lightHelper.update();
+//        for(var i = 0; i < lightHelpers.length; i++)
+//        {
+//            lightHelpers[i].update();
+//        }
 
+        var date = new Date();
         requestAnimationFrame( animate );
 
+        if(pre_sec != date.getSeconds()){
+            timer = 0.0;
+
+            for(var i = 0; i < noiseseed.length; i++)
+            {
+                noiseseed[i].x += 0.1;
+                noiseseed[i].y += 0.3;
+                noiseseed[i].z += 0.1;
+
+            }
+
+        }
+
+        timer += (timer_end - timer) *0.1;
+
         //group.rotation.y += 0.005;
+        //milliseconds +=
+
+        for(var i = 0; i < convexmeshs.length; i++)
+        {
+            convexmeshs[i].rotation.y+=Math.sin(timer)*0.1;
+            convexmeshs[i].position.y += Math.sin(timer)*8+1;
+            convexwiremeshs[i].rotation.y = convexmeshs[i].rotation.y;
+            convexwiremeshs[i].position.y = convexmeshs[i].position.y;
+
+            convexmeshs[i].rotation.x +=convexRotationValues[i].x*0.01;
+            convexwiremeshs[i].rotation.x +=convexRotationValues[i].x*0.01;
+
+            convexmeshs[i].rotation.z+=convexRotationValues[i].z*0.01;
+            convexwiremeshs[i].rotation.z+=convexRotationValues[i].z*0.01;
+
+            if(convexmeshs[i].position.y > 500)
+            {
+                convexmeshs[i].position.y = -50;
+                convexwiremeshs[i].position.y = -50;
+            }
+
+        }
+
+
+        plane.dynamic = true;
+
+        for(var i = 0; i < plane.attributes.position.array.length; i+=3)
+        {
+            //console.log(plane.attributes.position.array[i+2]);
+//
+            var value = noise.perlin3(noiseseed[i/3].x, this.noiseseed[i/3].y,noiseseed[i/3].z) * 15;
+
+
+            plane.attributes.position.array[i+2] = Math.abs( value * Math.sin(timer));
+        }
+        plane.attributes.position.needsUpdate = true;
+
+
+        pre_sec = date.getSeconds();
 
         render();
 
