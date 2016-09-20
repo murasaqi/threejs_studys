@@ -111,6 +111,8 @@
         document.body.appendChild( renderer.domElement );
         renderer.setClearColor(clearColor);
         scene.fog = new THREE.Fog(clearColor,0,1300);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFShadowMap;
 
         // camera
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
@@ -175,8 +177,7 @@
             shading:THREE.FlatShading,
             //shiness:200
             //wireframe:true
-            specular: 0xffffff,
-            shininess: 150
+
         } );
 
         var meshwireMaterial = new THREE.MeshBasicMaterial( {
@@ -194,8 +195,8 @@
             var pos = randomPoint();
             cvMesh.position.set(pos.x*200,pos.y*800,pos.z*200-200);
             cvMesh.castShadow = true;
+            cvMesh.receiveShadow = true;
             convexmeshs.push(cvMesh);
-            convexmeshs.castShadow = true;
             scene.add(cvMesh);
 
 
