@@ -27,7 +27,7 @@ function init() {
     camera.lookAt(0,0,0);
 
     scene = new THREE.Scene();
-    scene.fog = new THREE.Fog( 0x050505, 2000, 3500 );
+     scene.fog = new THREE.Fog( 0x050505, 2000, 3500 );
 
     scene.add( new THREE.AmbientLight( 0x444444 ) );
 
@@ -128,19 +128,17 @@ function init() {
         var vz = ( z / n ) + 0.5;
 
         // var c = Math.random()*10;
-        color.setRGB(Math.random()*0.6+0.4, Math.random()*0.5+0.1, Math.random()*0.6+0.4);
-
-        colors[0] = color.r;
-        colors[1] = color.g;
-        colors[2] = color.b;
-
-        colors[3] = color.r;
-        colors[4] = color.g;
-        colors[5] = color.b;
-
-        colors[6] = color.r;
-        colors[7] = color.g;
-        colors[8] = color.b;
+        // color.setRGB(Math.random()*0.6+0.4, Math.random()*0.5+0.1, Math.random()*0.6+0.4);
+        color.setRGB( vx, vy, vz );
+        colors[ i ]     = color.r;
+        colors[ i + 1 ] = color.g;
+        colors[ i + 2 ] = color.b;
+        colors[ i + 3 ] = color.r;
+        colors[ i + 4 ] = color.g;
+        colors[ i + 5 ] = color.b;
+        colors[ i + 6 ] = color.r;
+        colors[ i + 7 ] = color.g;
+        colors[ i + 8 ] = color.b;
 
 
         originColors.push(colors);
@@ -158,12 +156,17 @@ function init() {
 
         _geometry.computeBoundingSphere();
 
-        var _material = new THREE.MeshPhongMaterial({
+        // var _material = new THREE.MeshPhongMaterial({
+        //     color: 0xaaaaaa, specular: 0xffffff, shininess: 250,
+        //     side: THREE.DoubleSide, vertexColors: THREE.VertexColors
+        // });
+
+        var material = new THREE.MeshPhongMaterial( {
             color: 0xaaaaaa, specular: 0xffffff, shininess: 250,
             side: THREE.DoubleSide, vertexColors: THREE.VertexColors
-        });
+        } );
 
-        var _mesh = new THREE.Mesh(_geometry, _material);
+        var _mesh = new THREE.Mesh(_geometry, material);
         _mesh.position.set(Math.random() * 2000 - 1000, 0, Math.random() *1000);
         meshs.push(_mesh);
         scene.add(meshs[i]);

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>three.js webgl - buffergeometry - lines</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            color: #cccccc;
+            font-family:Monospace;
+            font-size:13px;
+            text-align:center;
+            background-color: #000000;
+            margin: 0px;
+            overflow: hidden;
+        }
+        #info {
+            position: absolute;
+            top: 0px; width: 100%;
+            padding: 5px;
+        }
+        a {
+            color: #0080ff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script src="./js/three.js"></script>
+<script src="./js/perlin.js"></script>
+<script src="js/Detector.js"></script>
+<script src="./js/OrbitControls.js"></script>
+<script src="js/stats.min.js"></script>
+
+<script>
+    if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+    var container, stats;
+    var camera, scene, renderer;
+    var mesh;
+
+    var meshsGroup;
+    var counter = 0;
+    var meshs = [];
+    init();
+    animate();
+    function init() {
+        container = document.getElementById( 'container' );
+        //
+        camera = new THREE.PerspectiveCamera( 27, window.innerWidth / window.innerHeight, 1, 40000 );
+        camera.position.z = 200;
+        //camera.position.x = 300;
+        scene = new THREE.Scene();
+
+        scene.fog = new THREE.Fog(0x000000,1,4000);
+
+        meshsGroup = new THREE.Group();
+        for (var i = 0; i < 100; i++)
+        {
+            var _segments = 100;
+            var _geometry = new THREE.BufferGeometry();
+            var _material = new THREE.LineBasicMaterial({ vertexColors: THREE.VertexColors });
+            var _positions = new Float32Array( _segments * 3 );
+            var _colors = new Float32Array( _segments * 3 );
+            var _r = 400;
+
+            _r = (noise.perlin2(i*0.01,i*0.01)+1.0)*_r;
+            var noisexScale = 0.04;
+            var noiseyScale = 0.06;
+            for ( var j = 0; j < _segments; j ++ ) {
+
+                var noisex = (noise.perlin2(i*noisexScale,j*noiseyScale)+1.0);
+                var noisey = (noise.perlin2(i*noisexScale,j*noiseyScale)+1.0);
+                var rad = Math.PI*2/(_segments-1)*j+i*0.02;
+                if(rad > Math.PI)
+                {
+//                    noisex *= Math.PI*2/rad;
+//                    noisey *= Math.PI*2/rad;
+                }
+                var x = (_r*noisex)* Math.cos(rad);
+                var y = (_r*noisey)* Math.sin(rad);
+                var z = 300-i*30;
+                console.log(z);
+                // positions
+
+                _positions[ j * 3 ] = x;
+                _positions[ j * 3 + 1 ] = y;
+                _positions[ j * 3 + 2 ] = 0;
+                _colors[ j * 3 ] = 0.8;
+                _colors[ j * 3 + 1 ] = 0.8;
+                _colors[ j * 3 + 2 ] = 0.8;
+            }
+
+            _geometry.addAttribute( 'position', new THREE.BufferAttribute( _positions, 3 ) );
+            _geometry.addAttribute( 'color', new THREE.BufferAttribute( _colors, 3 ) );
+            _geometry.computeBoundingSphere();
+            var _mesh;
+            _mesh = new THREE.Line( _geometry, _material );
+            _mesh.position.z = 300-i*30;
+
+            meshs.push({mesh:_mesh,rad:0.0,num:i});
+            scene.add(_mesh);
+
+        }
+
+        //
+        renderer = new THREE.WebGLRenderer( { antialias: false } );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+        container.appendChild( renderer.domElement );
+        //
+        stats = new Stats();
+        //container.appendChild( stats.dom );
+        //
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        window.addEventListener( 'resize', onWindowResize, false );
+    }
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+    }
+    //
+    function animate() {
+        requestAnimationFrame( animate );
+        render();
+        stats.update();
+    }
+
+    function render() {
+        if(counter >= meshs.length)
+        {
+            counter = 0;
+        }
+//        meshs[counter].rad += Math.PI/3;
+//        var verts = meshs[counter].mesh.geometry.attributes.position.array;
+//        meshs[counter].num++;
+//        var num = meshs[counter].num;
+//        var _r = (noise.perlin2(num*0.01,num*0.01)+1.0)*_r;
+//        var noisexScale = 0.04;
+//        var noiseyScale = 0.06;
+//        var _segments = 100;
+//        for(var i = 0; i < verts.length; i++)
+//        {
+//            var noisex = (noise.perlin2(num*noisexScale,i*noiseyScale)+1.0);
+//            var noisey = (noise.perlin2(num*noisexScale,i*noiseyScale)+1.0);
+//            var rad = Math.PI*2/(_segments-1)*i+num*0.02;
+//
+//            var x = (_r*noisex)* Math.cos(rad);
+//            var y = (_r*noisey)* Math.sin(rad);
+//            var z = 300-i*30;
+//
+//            verts[ j * 3 ] = x;
+//            verts[ j * 3 + 1 ] = y;
+//            verts[ j * 3 + 2 ] = z;
+//
+//        }
+
+
+
+        if(meshs[counter].mesh.position.z >100)
+        {
+//            meshs[counter].mesh.position.z -= 2500;
+        }
+
+        meshs[counter].rad += Math.PI/4;
+
+        counter++;
+
+        var time = Date.now() * 0.001;
+//        mesh.rotation.x = time * 0.25;
+//        mesh.rotation.y = time * 0.5;
+//        meshsGroup.position.z += 2;
+//        meshsGroup.rotation.z += 0.003;
+        for(var i = 0; i < meshs.length; i++)
+        {
+
+            meshs[i].mesh.scale.set(Math.sin(time+i*0.3)*Math.sin(time*0.4),Math.sin(time+i*0.3)*Math.cos(time*0.7),0)
+            meshs[i].mesh.rotation.z += (meshs[i].rad - meshs[i].mesh.rotation.z) * 0.2;
+
+
+        }
+        //meshsGroup.childIndex(0).rotation.z += 0.3;
+        renderer.render( scene, camera );
+    }
+</script>
+
+</body>
+</html>

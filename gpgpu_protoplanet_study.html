@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>three.js webgl - gpgpu - protoplanet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            background-color: #000000;
+            margin: 0px;
+            overflow: hidden;
+            font-family:Monospace;
+            font-size:13px;
+            text-align:center;
+            text-align:center;
+            cursor: pointer;
+        }
+        a {
+            color:#0078ff;
+        }
+        #info {
+            color: #ffffff;
+            position: absolute;
+            top: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<script src="./js/three.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/stats.min.js"></script>
+<script src="js/dat.gui.min.js"></script>
+<script src="js/OrbitControls.js"></script>
+
+<script src="js/GPUComputationRenderer.js"></script>
+
+
+<!-- Fragment shader for protoplanet's position -->
+<script id="computeShaderPosition" type="x-shader/x-fragment">
+			#define delta ( 1.0 / 60.0 )
+			void main() {
+				vec2 uv = gl_FragCoord.xy / resolution.xy;
+				vec4 tmpPos = texture2D( texturePosition, uv );
+				vec3 pos = tmpPos.xyz;
+				vec4 tmpVel = texture2D( textureVelocity, uv );
+				vec3 vel = tmpVel.xyz;
+
+				// Dynamics
+			    pos += vel * delta;
+				gl_FragColor = vec4( pos, 1.0 );
+			}
+		</script>
+
+<!-- Fragment shader for protoplanet's velocity -->
+<script id="computeShaderVelocity" type="x-shader/x-fragment">
+			// For PI declaration:
+			#include <common>
+			#define delta ( 1.0 / 60.0 )
+			const float width = resolution.x;
+			const float height = resolution.y;
+
+
+			uniform float time;
+			const int   oct  = 8;
+            const float per  = 0.5;
+            const float cCorners = 1.0 / 16.0;
+            const float cSides   = 1.0 / 8.0;
+            const float cCenter  = 1.0 / 4.0;
+
+            float interpolate(float a, float b, float x){
+                float f = (1.0 - cos(x * PI)) * 0.5;
+                return a * (1.0 - f) + b * f;
+            }
+
+            // 乱数生成
+            float rnd(vec2 p){
+                return fract(sin(dot(p ,vec2(12.9898,78.233))) * 43758.5453);
+            }
+
+            // 補間乱数
+            float irnd(vec2 p){
+                vec2 i = floor(p);
+                vec2 f = fract(p);
+                vec4 v = vec4(rnd(vec2(i.x,       i.y      )),
+                              rnd(vec2(i.x + 1.0, i.y      )),
+                              rnd(vec2(i.x,       i.y + 1.0)),
+                              rnd(vec2(i.x + 1.0, i.y + 1.0)));
+                return interpolate(interpolate(v.x, v.y, f.x), interpolate(v.z, v.w, f.x), f.y);
+            }
+
+            // ノイズ生成
+            float noise(vec2 p){
+                float t = 0.0;
+                for(int i = 0; i < oct; i++){
+                    float freq = pow(2.0, float(i));
+                    float amp  = pow(per, float(oct - i));
+                    t += irnd(vec2(p.x / freq, p.y / freq)) * amp;
+                }
+                return t;
+            }
+
+
+            // シームレスノイズ生成
+            float snoise(vec2 p, vec2 q, vec2 r){
+                return noise(vec2(p.x,       p.y      )) *        q.x  *        q.y  +
+                       noise(vec2(p.x,       p.y + r.y)) *        q.x  * (1.0 - q.y) +
+                       noise(vec2(p.x + r.x, p.y      )) * (1.0 - q.x) *        q.y  +
+                       noise(vec2(p.x + r.x, p.y + r.y)) * (1.0 - q.x) * (1.0 - q.y);
+            }
+            float mod289(float x){return x - floor(x * (1.0 / 289.0)) * 289.0;}
+            vec4 mod289(vec4 x){return x - floor(x * (1.0 / 289.0)) * 289.0;}
+            vec4 perm(vec4 x){return mod289(((x * 34.0) + 1.0) * x);}
+
+            float noise3(vec3 p){
+                vec3 a = floor(p);
+                vec3 d = p - a;
+                d = d * d * (3.0 - 2.0 * d);
+
+                vec4 b = a.xxyy + vec4(0.0, 1.0, 0.0, 1.0);
+                vec4 k1 = perm(b.xyxy);
+                vec4 k2 = perm(k1.xyxy + b.zzww);
+
+                vec4 c = k2 + a.zzzz;
+                vec4 k3 = perm(c);
+                vec4 k4 = perm(c + 1.0);
+
+                vec4 o1 = fract(k3 * (1.0 / 41.0));
+                vec4 o2 = fract(k4 * (1.0 / 41.0));
+
+                vec4 o3 = o2 * d.z + o1 * (1.0 - d.z);
+                vec2 o4 = o3.yw * d.x + o3.xz * (1.0 - d.x);
+
+                return o4.y * d.y + o4.x * (1.0 - d.y);
+            }
+
+
+
+			void main()	{
+				vec2 uv = gl_FragCoord.xy / resolution.xy;
+				float idParticle = uv.y * resolution.x + uv.x;
+				vec4 tmpPos = texture2D( texturePosition, uv );
+				vec3 pos = tmpPos.xyz;
+				vec4 tmpVel = texture2D( textureVelocity, uv );
+				vec3 vel = tmpVel.xyz;
+				//float mass = tmpVel.w;
+
+                //vec2 t = tmpPos.xy + vec2(time * 10.0);
+                //vec2 tt = tmpPos.xz + vec2(time * 10.0);
+                //float n = noise(t)*6.0;
+                float n = noise3(tmpPos.xyz)*2.0;
+                vel *= n;
+                vec3 normal = normalize(tmpPos.xyz);
+                //texture2D( texturePosition, uv ) = vec4( vel*n, 1.0 );
+				//gl_FragColor = vec4( vel, 1.0 );
+				gl_FragColor = vec4( normal.yzx, 1.0 );
+			}
+		</script>
+
+<!-- Particles vertex shader -->
+<script type="x-shader/x-vertex" id="particleVertexShader">
+			// For PI declaration:
+			#include <common>
+			uniform sampler2D texturePosition;
+			uniform sampler2D textureVelocity;
+			uniform float cameraConstant;
+			uniform float density;
+			varying vec4 vColor;
+			varying vec2 vUv;
+			uniform float radius;
+
+			void main() {
+				vec4 posTemp = texture2D( texturePosition, uv );
+				vec3 pos = posTemp.xyz;
+				vec4 velTemp = texture2D( textureVelocity, uv );
+				vec3 vel = velTemp.xyz;
+				vColor = vec4( 1.0, 0.7, 1.0, 1.0 );
+				vec4 mvPosition = modelViewMatrix * vec4( pos, 1.0 );
+				gl_PointSize = 0.5 * cameraConstant / ( - mvPosition.z );
+				vUv = uv;
+
+				gl_Position = projectionMatrix * mvPosition;
+			}
+		</script>
+
+<!-- Particles fragment shader -->
+<script type="x-shader/x-fragment" id="particleFragmentShader">
+			varying vec4 vColor;
+			void main() {
+			    float f = length( gl_PointCoord - vec2( 0.5, 0.5 ) );
+				if ( f > 0.1 ) {
+					discard;
+				}
+				gl_FragColor = vColor;
+			}
+		</script>
+
+
+<script>
+    if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+    var WIDTH = 100;
+    var container, stats;
+    var camera, scene, renderer, geometry, controls;
+    var PARTICLES = WIDTH * WIDTH;
+
+    function change(n) {
+        location.hash = n;
+        location.reload();
+        return false;
+    }
+    var options = '';
+    for ( var i = 1; i < 8; i++ ) {
+        var j = Math.pow( 2, i );
+        options += '<a href="#" onclick="return change(' + j + ')">' + ( j * j ) + '</a> ';
+    }
+
+    var gpuCompute;
+    var velocityVariable;
+    var positionVariable;
+    var positionUniforms;
+    var velocityUniforms;
+    var particleUniforms;
+    var effectController;
+    init();
+    animate();
+    function init() {
+        container = document.createElement( 'div' );
+        document.body.appendChild( container );
+        camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 5, 15000 );
+        camera.position.y = 120;
+        camera.position.z = 400;
+        scene = new THREE.Scene();
+        renderer = new THREE.WebGLRenderer();
+        renderer.setClearColor( 0x000000 );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        container.appendChild( renderer.domElement );
+        controls = new THREE.OrbitControls( camera, renderer.domElement );
+        effectController = {
+            time: 0.0,
+
+        };
+
+        // gpuCopute用のRenderを作る
+        initComputeRenderer();
+        stats = new Stats();
+        container.appendChild( stats.dom );
+        window.addEventListener( 'resize', onWindowResize, false );
+        // particle 初期化
+        initPosition();
+
+    }
+    function initComputeRenderer() {
+
+        gpuCompute = new GPUComputationRenderer( WIDTH, WIDTH, renderer );
+        var dtPosition = gpuCompute.createTexture();
+        var dtVelocity = gpuCompute.createTexture();
+        fillTextures( dtPosition, dtVelocity );
+        velocityVariable = gpuCompute.addVariable( "textureVelocity", document.getElementById( 'computeShaderVelocity' ).textContent, dtVelocity );
+        positionVariable = gpuCompute.addVariable( "texturePosition", document.getElementById( 'computeShaderPosition' ).textContent, dtPosition );
+        gpuCompute.setVariableDependencies( velocityVariable, [ positionVariable, velocityVariable ] );
+        gpuCompute.setVariableDependencies( positionVariable, [ positionVariable, velocityVariable ] );
+        positionUniforms = positionVariable.material.uniforms;
+        velocityUniforms = velocityVariable.material.uniforms;
+//        velocityUniforms.gravityConstant = { value: 0.0 };
+//        velocityUniforms.density = { value: 0.0 };
+        velocityUniforms.time = { value: 0.0 };
+        var error = gpuCompute.init();
+        if ( error !== null ) {
+            console.error( error );
+        }
+    }
+    function restartSimulation() {
+        var dtPosition = gpuCompute.createTexture();
+        var dtVelocity = gpuCompute.createTexture();
+        fillTextures( dtPosition, dtVelocity );
+        gpuCompute.renderTexture( dtPosition, positionVariable.renderTargets[ 0 ] );
+        gpuCompute.renderTexture( dtPosition, positionVariable.renderTargets[ 1 ] );
+        gpuCompute.renderTexture( dtVelocity, velocityVariable.renderTargets[ 0 ] );
+        gpuCompute.renderTexture( dtVelocity, velocityVariable.renderTargets[ 1 ] );
+    }
+    function initPosition() {
+        geometry = new THREE.BufferGeometry();
+        var positions = new Float32Array( PARTICLES * 3 );
+        var p = 0;
+        for ( var i = 0; i < PARTICLES; i++ ) {
+            positions[ p++ ] = 0;
+            positions[ p++ ] = 0;
+            positions[ p++ ] = 0;
+        }
+        var uvs = new Float32Array( PARTICLES * 2 );
+        p = 0;
+        for ( var j = 0; j < WIDTH; j++ ) {
+            for ( var i = 0; i < WIDTH; i++ ) {
+                uvs[ p++ ] = i / ( WIDTH - 1 );
+                uvs[ p++ ] = j / ( WIDTH - 1 );
+            }
+        }
+        geometry.addAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
+        geometry.addAttribute( 'uv', new THREE.BufferAttribute( uvs, 2 ) );
+        particleUniforms = {
+            texturePosition: { value: null },
+            textureVelocity: { value: null },
+            cameraConstant: { value: getCameraConstant( camera ) }
+        };
+        // ShaderMaterial
+        var material = new THREE.ShaderMaterial( {
+            uniforms:       particleUniforms,
+            vertexShader:   document.getElementById( 'particleVertexShader' ).textContent,
+            fragmentShader: document.getElementById( 'particleFragmentShader' ).textContent
+        });
+        material.extensions.drawBuffers = true;
+        var particles = new THREE.Points( geometry, material );
+        particles.matrixAutoUpdate = false;
+        particles.updateMatrix();
+        scene.add( particles );
+    }
+    function fillTextures( texturePosition, textureVelocity ) {
+        var posArray = texturePosition.image.data;
+        var velArray = textureVelocity.image.data;
+
+        var phi =0;
+        var theta = 0;
+        for ( var k = 0, kl = posArray.length; k < kl; k += 4 ) {
+            // Position
+            var x, y, z;
+            phi = Math.random() * Math.PI*2;
+            theta = Math.random() * Math.PI*2;
+
+//            x = 300 * Math.cos(phi)*Math.sin(theta);
+//            y = 300 * Math.cos(theta);
+//            z = 300 * Math.sin(phi)*Math.sin(theta);
+            x = Math.random()*100-50;
+            z = Math.random()*100-50;
+            y = 0;
+            // Fill in texture values
+            posArray[ k + 0 ] = x;
+            posArray[ k + 1 ] = y;
+            posArray[ k + 2 ] = z;
+            posArray[ k + 3 ] = 0;
+            velArray[ k + 0 ] = Math.random()*2-1;
+            velArray[ k + 1 ] = Math.random()*2-1;
+            velArray[ k + 2 ] = Math.random()*2-1;
+            velArray[ k + 3 ] = Math.random()*2-1;
+        }
+    }
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        particleUniforms.cameraConstant.value = getCameraConstant( camera );
+    }
+
+    function getCameraConstant( camera ) {
+        return window.innerHeight / ( Math.tan( THREE.Math.DEG2RAD * 0.5 * camera.fov ) / camera.zoom );
+    }
+    function animate() {
+        requestAnimationFrame( animate );
+        render();
+        stats.update();
+    }
+    function render() {
+        gpuCompute.compute();
+        particleUniforms.texturePosition.value = gpuCompute.getCurrentRenderTarget( positionVariable ).texture;
+        particleUniforms.textureVelocity.value = gpuCompute.getCurrentRenderTarget( velocityVariable ).texture;
+        renderer.render( scene, camera );
+    }
+</script>
+</body>

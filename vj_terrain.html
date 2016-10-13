@@ -43,6 +43,7 @@
     var WIDTH = window.innerWidth;
     var HEIGHT = window.innerHeight;
     var preSec,timer_end,timer,timer_roop;
+    var frameCounter;
 
     // camera
     var VIEW_ANGLE = 45;
@@ -52,20 +53,32 @@
     var planeGeo;
     var vertex;
 
+    var planes;
+
+    var cubes = [];
+    var cubePos = [];
+
 
     var camera, scene, renderer;
 
-    var cameraControls;
-
-    var verticalMirror, groundMirror;
-    var sphereGroup, smallSphere;
     var noiseseed;
 
 
     var mainLight,greenLight,redLight,blueLight;
 
+    var settings = {
+        metalness: 0.1,
+        roughness: 0.2,
+        ambientIntensity: 0.1,
+        aoMapIntensity: 1.0,
+        envMapIntensity: 1.0,
+        displacementScale: 2.436143, // from original model
+        normalScale: 1.0
+    };
     function init() {
 
+        planes = [];
+        frameCounter = 0;
         noiseseed = [];
         timer_end = Math.PI;
         timer = 0.0;
@@ -82,13 +95,8 @@
 
         // camera
         camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
-        camera.position.set( 0, 75, 160 );
+        camera.position.set( 0, 0, 0 );
 
-        cameraControls = new THREE.OrbitControls(camera, renderer.domElement);
-        cameraControls.target.set( 0, 40, 0);
-        cameraControls.maxDistance = 400;
-        cameraControls.minDistance = 10;
-        cameraControls.update();
 
         var container = document.getElementById( 'container' );
         container.appendChild( renderer.domElement );
@@ -99,51 +107,55 @@
 
     function fillScene() {
 
-        planeGeo = new THREE.PlaneBufferGeometry( 2000.1, 2000.1 ,20,20);
+        var width = 3000;
+
+
+        planeGeo = new THREE.PlaneGeometry( width, width ,20,20);
         var wirematerial = new THREE.MeshPhongMaterial({
             color:0xffffff,
             wireframe: true
         });
 
+        console.log(planeGeo);
 
-        vertex = planeGeo.attributes.position.array;
-        for(var i = 0; i < vertex.length; i+=3)
+        vertex = planeGeo.vertices;
+        var _x = 0;
+        var _y = 0;
+        var _z = 0;
+        for(var i = 0; i < vertex.length; i++)
         {
-            noiseseed.push({x:vertex[i],y:vertex[i+1],z:vertex[i+2]})
+            //console.log(vertex[i]);
+            _x += 0.1;
+            _y += 0.2;
+            _z += 0.1;
+            noiseseed.push({x:_x,y:_y,z:_z})
         }
-        console.log(noiseseed);
+//        console.log(noiseseed);
 
         var cubemapmaterial = new THREE.MeshPhongMaterial({
             color: 0x000000,
             Shading:THREE.FlatShading
             //envMap: scene.background
             //camera.getTexture()
-        })
-
-        var gournd = new THREE.Mesh( planeGeo, cubemapmaterial );
-        //mirrorMesh.add( groundMirror );
-        gournd.rotateX( - Math.PI / 2 );
-        gournd.position.z = -700;
-        scene.add( gournd );
-
-        var upper = new THREE.Mesh(planeGeo,cubemapmaterial);
-        upper.rotateX(Math.PI/2);
-        upper.position.y = 150;
-        upper.position.z = -700;
-        scene.add(upper);
+        });
+        var ypos = 300;
 
 
         var upperWire = new THREE.Mesh(planeGeo,wirematerial);
         upperWire.rotateX(Math.PI/2);
-        upperWire.position.y = 150;
-        upperWire.position.z = -700;
+        upperWire.position.y = ypos;
+        upperWire.position.z = 0;
+        planes.push(upperWire);
         scene.add(upperWire);
 
 
         var wireMesh = new THREE.Mesh(planeGeo,wirematerial);
         wireMesh.rotateX( - Math.PI / 2 );
-        wireMesh.position.y = 1;
-        wireMesh.position.z = -700;
+        wireMesh.updateMatrix();
+
+        wireMesh.position.y = -ypos;
+        wireMesh.position.z = 0;
+        scene.add(wireMesh);
 
 
 
@@ -175,7 +187,46 @@
         blueLight.position.set( 0, 50, 550 );
         scene.add( blueLight );
 
-        scene.add(wireMesh);
+
+        var centerLight = new THREE.PointLight( 0xffffff, 0.7, 1000 );
+        centerLight.position.set( 0, 0, 0 );
+        scene.add( centerLight );
+
+
+        var textureLoader = new THREE.TextureLoader();
+
+        var normalMap = textureLoader.load( "textures/vj/nomalmap.png" );
+        //var map = textureLoader.load( "textures/tilemap.png" );
+        var displacementMap = textureLoader.load( "textures/vj/bumpmap.jpg" );
+
+        var cubeGeomery = new THREE.CubeGeometry(20,20,20);
+        var cubeMaterial = new THREE.MeshStandardMaterial({
+            color: 0xaaaaaa, specular: 0xffffff, shininess: 250,
+            roughness: settings.roughness,
+            metalness: settings.metalness,
+
+            normalMap: normalMap,
+            normalScale: new THREE.Vector2( 1, - 1 ), // why does the normal map require negation in this case?
+
+            displacementMap: displacementMap,
+            displacementScale: settings.displacementScale,
+            displacementBias: - 0.428408, // from original model
+        });
+
+        for(var i = 0; i < 30; i++)
+        {
+            var phi = Math.random() * Math.PI*2;
+            var theta = Math.random() * Math.PI*2;
+            var mesh = new THREE.Mesh(cubeGeomery,cubeMaterial);
+            mesh.position.x = 100 * Math.cos(phi)*Math.sin(theta);
+            mesh.position.y = 100 * Math.cos(theta);
+            mesh.position.z = 100 * Math.sin(phi)*Math.sin(theta);
+            cubePos.push({position:mesh.position,phi:phi,theta:theta});
+            cubes.push(mesh);
+            scene.add(mesh);
+        }
+
+
     }
 
     function render() {
@@ -208,30 +259,42 @@
 
         //var timer = Date.now() * 0.001;
         timer += (timer_end - timer) *0.1;
-        //timer++;
-        console.log(timer_end);
-//        sphereGroup.rotation.y -= 0.002;
 
-//        smallSphere.position.set(
-//                Math.cos( timer * 0.1 ) * 30,
-//                Math.abs( Math.cos( timer * 0.2 ) ) * 20 + 5,
-//                Math.sin( timer * 0.1 ) * 30
-//        );
-//        smallSphere.rotation.y = ( Math.PI / 2 ) - timer * 0.1;
-//        smallSphere.rotation.z = timer * 0.8;
+        frameCounter += 0.001;
+
+        camera.position.x = Math.sin(frameCounter) * 1000;
+        camera.position.z = Math.cos(frameCounter) * 1000;
+
+        camera.lookAt(new THREE.Vector3(0,0,0));
 
 
-        planeGeo.dynamic = true;
-        for(var i = 0; i < planeGeo.attributes.position.array.length; i+=3)
+        for(var i = 0; i < vertex.length; i++)
         {
-//
-            var value = noise.perlin3(noiseseed[i/3].x, this.noiseseed[i/3].y,noiseseed[i/3].z) * 70;
+
+            var value = noise.perlin3(noiseseed[i].x, this.noiseseed[i].y,noiseseed[i].z) * 70;
 
 
-            planeGeo.attributes.position.array[i+2] = Math.abs( value * Math.sin(timer));
+            //vertex[i].z+=5;
+            planeGeo.vertices[i].z = Math.abs( value * Math.sin(timer));
         }
 
-        planeGeo.attributes.position.needsUpdate = true;
+        for(var i = 0; i < cubePos.length; i++)
+        {
+            cubePos[i].phi += 0.01;
+            cubePos[i].theta += 0.01;
+            cubePos[i].x = 100 * Math.cos(cubePos[i].phi)*Math.sin(cubePos[i].theta);
+            cubePos[i].y = 100 * Math.cos(cubePos[i].theta);
+            cubePos[i].z = 100 * Math.sin(cubePos[i].phi)*Math.sin(cubePos[i].theta);
+
+            cubes[i].position.x = cubePos[i].x;
+            cubes[i].position.y = cubePos[i].y;
+            cubes[i].position.z = cubePos[i].z;
+            cubes[i].rotation.x = cubePos[i].phi;
+            cubes[i].rotation.y = cubePos[i].theta;
+            //cubes[i].rotation.z -= 0.1;
+        }
+
+        planeGeo.verticesNeedUpdate = true;
 
         mainLight.position.x = 500 * Math.cos(timer_roop);
         mainLight.position.z = -800+500 * Math.sin(timer_roop);

@@ -2,10 +2,264 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5937929-9572-4358-af7c-9dc63dad8492" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/multipleScene_study.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/camaro/CamaroNoUv_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/cubecolors/cube_fvc.blend" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/cubecolors/cubecolors.blend" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/f50/F50NoUv_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/female02/01_-_Default1noCulling.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/female02/02_-_Default1noCulling.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/female02/03_-_Default1noCulling.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/female02/Female02_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/gallardo/GallardoNoUv_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/gallardo/parts/gallardo_body_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/gallardo/parts/gallardo_wheel_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/leeperrysmith/Infinite-Level_02_Disp_NoSmoothUV-4096.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/leeperrysmith/Infinite-Level_02_Tangent_SmoothUV.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/leeperrysmith/Map-COL.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/leeperrysmith/Map-SPEC.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/lightmap/lightmap-ao-shadow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/lightmap/rocks.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/lightmap/stone.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/lucy/Lucy100k_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/01_-_Default1noCulling.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/01_-_Default1noCulling.dds" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/Male02_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/male-02-1noCulling.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/male-02-1noCulling.dds" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/orig_02_-_Defaul1noCulling.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/orig_02_-_Defaul1noCulling.dds" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/ninja/NinjaLo_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/veyron/VeyronNoUv_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/veyron/parts/veyron_body_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/veyron/parts/veyron_wheel_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/walt/WaltHead_bin.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/ZED_Mesh.ply" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured.obj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0000_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0001_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0002_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0003_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0004_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0005_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0006_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0007_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0008_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0009_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0010_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0011_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0012_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0013_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0014_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0015_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0016_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0017_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0018_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0019_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0020_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0021_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0022_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0023_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0024_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0025_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0026_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0027_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0028_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0029_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0030_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0031_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0032_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured_material0033_map_Kd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_10.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_101.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_102.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_103.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_11.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_12.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_13.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_14.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_15.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_16.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_17.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_18.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_19.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_20.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_21.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_22.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_23.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_24.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_25.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_26.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_27.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_29.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_30.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_31.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_33.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_34.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_35.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_36.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_37.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_38.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_39.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_40.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_41.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_42.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_43.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_44.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_45.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_46.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_47.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_48.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_49.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_50.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_51.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_52.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_53.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_54.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_55.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_56.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_57.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_58.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_59.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_60.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_61.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_62.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_63.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_64.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_65.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_66.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_67.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_68.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_69.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_70.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_71.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_72.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_73.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_74.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_75.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_76.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_77.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_78.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_79.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_8.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_80.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_81.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_82.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_83.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_84.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_85.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_86.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_87.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_88.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_89.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_90.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_91.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_92.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_93.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_94.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_95.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_96.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_97.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_98.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/image_99.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/textures/vj/bumpmap.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/textures/vj/nomalmap.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/03-shapes.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThePointOfView.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brokenReborn.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/canvas_geometry_shapes.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/castshadow_spline_study.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/clipping_advanced_study.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/clipping_study.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example_castShadow.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gpgpu_protoplanet_study.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gpu_particle.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/CurveExtras.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/DDSLoader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/MTLLoader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/OBJLoader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/ParametricGeometries.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/Projector.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/chroma.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/hilbert3D.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/physi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/Bird.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/Qrcode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/Suzanne.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/WaltHeadLo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/camaro/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/camaro/CamaroNoUv_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/cubecolors/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/cubecolors/cube_fvc.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/cubecolors/cubecolors.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/f50/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/f50/F50NoUv_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/female02/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/female02/Female02_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/female02/Female02_slim.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/female02/female02.mtl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/female02/female02.obj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/female02/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/gallardo/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/gallardo/GallardoNoUv_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/gallardo/parts/gallardo_body_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/gallardo/parts/gallardo_wheel_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/leeperrysmith/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/leeperrysmith/LeePerrySmith.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/leeperrysmith/LeePerrySmith.obj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/leeperrysmith/LeePerrySmith_License.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/lightmap/lightmap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/lightmap/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/lucy/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/lucy/Lucy100k_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/lucy/Lucy100k_slim.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/Male02_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/Male02_dds.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/Male02_slim.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/male02.mtl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/male02.obj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/male02_dds.mtl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/male02/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/ninja/NinjaLo_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/terrain.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/veyron/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/veyron/VeyronNoUv_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/veyron/parts/veyron_body_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/veyron/parts/veyron_wheel_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/walt/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/walt/WaltHead.mtl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/walt/WaltHead.obj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/walt/WaltHead_bin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/walt/WaltHead_slim.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/meshTextured.mtl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj/zed/texture/path.ini" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/obj_mtl_study.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/shader_study.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/triangle_particle_study.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vj_line.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webgl_clipping_advanced.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webgl_geometries2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webgl_geometry_extrude_splines.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webgl_geometry_shapes.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webgl_lines_splines.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/castshadow_study.html" afterPath="$PROJECT_DIR$/castshadow_study.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vj_convex.html" afterPath="$PROJECT_DIR$/vj_convex.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/triangle_study.js" afterPath="$PROJECT_DIR$/js/triangle_study.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loderTest.html" afterPath="$PROJECT_DIR$/loderTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vj_terrain.html" afterPath="$PROJECT_DIR$/vj_terrain.html" />
     </list>
     <ignored path="threejs_studys.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,146 +281,60 @@
     <favorites_list name="threejs_studys" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.261959">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="vj_billboard.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/vj_billboard.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2175">
-                  <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="buffer_geomery_particle_study.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/buffer_geomery_particle_study.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="990">
-                  <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="cubemap_terrain_mirror.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/cubemap_terrain_mirror.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2415">
-                  <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="vj_convex.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/vj_convex.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4155">
-                  <caret line="277" column="9" selection-start-line="263" selection-start-column="8" selection-end-line="277" selection-end-column="9" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="castshadow_study.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/castshadow_study.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="271" column="66" selection-start-line="271" selection-start-column="7" selection-end-line="271" selection-end-column="66" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="multipleScene_study.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/multipleScene_study.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="git-host.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/node_modules/hosted-git-info/git-host.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TrackballControls.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/TrackballControls.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4830">
-                  <caret line="322" column="0" selection-start-line="322" selection-start-column="0" selection-end-line="322" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="plane.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/plane.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2760">
-                  <caret line="184" column="33" selection-start-line="184" selection-start-column="22" selection-end-line="184" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="plane.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/plane.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="linestudy.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/linestudy.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="5475">
-                  <caret line="365" column="48" selection-start-line="365" selection-start-column="48" selection-end-line="365" selection-end-column="48" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="cubemap_next.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/cubemap_next.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="103">
-                  <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="gpgpu_study.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/gpgpu_study.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2130">
-                  <caret line="66" column="38" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="vj_terrain.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vj_terrain.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1395">
+              <caret line="93" column="51" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="51" />
+              <folding>
+                <marker date="1476121654000" expanded="true" signature="6893:7846" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vj_line.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vj_line.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="obj_mtl_study.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/obj_mtl_study.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="79" column="35" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="http_github.com_DefinitelyTyped_DefinitelyTyped_raw_master_threejs_three.d.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_github.com_DefinitelyTyped_DefinitelyTyped_raw_master_threejs_three.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20730">
+              <caret line="1385" column="8" selection-start-line="1385" selection-start-column="8" selection-end-line="1385" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plane.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/plane.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3480">
+              <caret line="232" column="45" selection-start-line="232" selection-start-column="37" selection-end-line="232" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -182,24 +350,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/multitexture.html" />
-        <option value="$PROJECT_DIR$/multipleRender.html" />
-        <option value="$PROJECT_DIR$/background.html" />
-        <option value="$PROJECT_DIR$/js/triangle_study.js" />
-        <option value="$PROJECT_DIR$/multitexture.html" />
-        <option value="$PROJECT_DIR$/canvastexturetest.html" />
-        <option value="$PROJECT_DIR$/line_study.html" />
-        <option value="$PROJECT_DIR$/ballman.js" />
-        <option value="$PROJECT_DIR$/js/ballman.js" />
-        <option value="$PROJECT_DIR$/data/test.ply" />
-        <option value="$PROJECT_DIR$/loder_ply.html" />
-        <option value="$PROJECT_DIR$/js/test.es6" />
         <option value="$PROJECT_DIR$/ballman.html" />
         <option value="$PROJECT_DIR$/js/joint_test.js" />
         <option value="$PROJECT_DIR$/js/joint_test.es6" />
         <option value="$PROJECT_DIR$/js/PLYLoader.js" />
         <option value="$PROJECT_DIR$/data/vertex.txt" />
-        <option value="$PROJECT_DIR$/loderTest.html" />
         <option value="$PROJECT_DIR$/ViewangleTest.html" />
         <option value="$PROJECT_DIR$/spline_test.html" />
         <option value="$PROJECT_DIR$/terrain_test.html" />
@@ -212,7 +367,6 @@
         <option value="$PROJECT_DIR$/mirror_study.html" />
         <option value="$PROJECT_DIR$/cubemap_terrain_mirror.html" />
         <option value="$PROJECT_DIR$/vj_test.html" />
-        <option value="$PROJECT_DIR$/vj_terrain.html" />
         <option value="$PROJECT_DIR$/gpgpu_study.html" />
         <option value="$PROJECT_DIR$/dispmapstudy.html" />
         <option value="$PROJECT_DIR$/convecgeomery_study.html" />
@@ -222,8 +376,31 @@
         <option value="$PROJECT_DIR$/buffer_geomery_particle_study.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/vj_convex.html" />
-        <option value="$PROJECT_DIR$/castshadow_study.html" />
         <option value="$PROJECT_DIR$/multipleScene_study.html" />
+        <option value="$PROJECT_DIR$/webgl_geometry_extrude_splines.html" />
+        <option value="$PROJECT_DIR$/webgl_geometries2.html" />
+        <option value="$PROJECT_DIR$/webgl_lines_splines.html" />
+        <option value="$PROJECT_DIR$/03-shapes.html" />
+        <option value="$PROJECT_DIR$/canvas_geometry_shapes.html" />
+        <option value="$PROJECT_DIR$/webgl_geometry_shapes.html" />
+        <option value="$PROJECT_DIR$/webgl_clipping_advanced.html" />
+        <option value="$PROJECT_DIR$/clipping_study.html" />
+        <option value="$PROJECT_DIR$/js/triangle_study.js" />
+        <option value="$PROJECT_DIR$/triangle_particle_study.html" />
+        <option value="$PROJECT_DIR$/shader_study.html" />
+        <option value="$PROJECT_DIR$/clipping_advanced_study.html" />
+        <option value="$PROJECT_DIR$/loderTest.html" />
+        <option value="$PROJECT_DIR$/castshadow_spline_study.html" />
+        <option value="$PROJECT_DIR$/example_castShadow.html" />
+        <option value="$PROJECT_DIR$/newPointOfView.html" />
+        <option value="$PROJECT_DIR$/ThePointOfView.html" />
+        <option value="$PROJECT_DIR$/castshadow_study.html" />
+        <option value="$PROJECT_DIR$/brokenReborn.html" />
+        <option value="$PROJECT_DIR$/gpu_particle.html" />
+        <option value="$PROJECT_DIR$/gpgpu_protoplanet_study.html" />
+        <option value="$PROJECT_DIR$/vj_terrain.html" />
+        <option value="$PROJECT_DIR$/vj_line.html" />
+        <option value="$PROJECT_DIR$/obj_mtl_study.html" />
       </list>
     </option>
   </component>
@@ -234,10 +411,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="171" />
-    <option name="y" value="23" />
-    <option name="width" value="1076" />
-    <option name="height" value="787" />
+    <option name="x" value="59" />
+    <option name="y" value="305" />
+    <option name="width" value="1154" />
+    <option name="height" value="821" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -264,6 +441,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -292,7 +471,39 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="textures" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="threejs_studys" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="threejs_studys" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="obj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="threejs_studys" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="threejs_studys" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="obj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zed" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -308,28 +519,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test.es6" />
-              <option name="myItemType" value="com.intellij.plugins.watcher.projectView.NestingTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="threejs_studys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="threejs_studys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="joint_test.es6" />
-              <option name="myItemType" value="com.intellij.plugins.watcher.projectView.NestingTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -348,8 +537,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -361,15 +548,22 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="nodejs_interpreter_path" value="$USER_HOME$/.nodebrew/current/bin/node" />
     <property name="SearchEverywhereHistoryKey" value="//&#9;null&#9;null" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/convecgeomery_study.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/example_castShadow.html" />
+    <property name="ignore_missing_gitignore" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/obj/zed" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/js" />
+      <recent name="$PROJECT_DIR$/textures/vj" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.convecgeomery_study.html">
+  <component name="RunManager" selected="JavaScript Debug.example_castShadow.html">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
@@ -423,11 +617,11 @@
       <recursive>false</recursive>
       <method />
     </configuration>
-    <configuration default="false" name="convecgeomery_study.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://localhost:63342/threejs_studys/convecgeomery_study.html">
+    <configuration default="false" name="example_castShadow.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://localhost:63342/threejs_studys/example_castShadow.html">
       <method />
     </configuration>
     <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.convecgeomery_study.html" />
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.example_castShadow.html" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -454,51 +648,73 @@
       <workItem from="1473660772222" duration="19346000" />
       <workItem from="1473924880134" duration="39563000" />
       <workItem from="1474300654843" duration="108000" />
-      <workItem from="1474300953810" duration="3133000" />
+      <workItem from="1474300953810" duration="3951000" />
+      <workItem from="1474469648069" duration="9607000" />
+      <workItem from="1474876684010" duration="6855000" />
+      <workItem from="1474961220648" duration="7826000" />
+      <workItem from="1475003983544" duration="21000" />
+      <workItem from="1475042255044" duration="16707000" />
+      <workItem from="1475155451623" duration="978000" />
+      <workItem from="1475222723004" duration="14605000" />
+      <workItem from="1475430550475" duration="5145000" />
+      <workItem from="1475553765807" duration="13446000" />
+      <workItem from="1475828112402" duration="46526000" />
+      <workItem from="1476267364567" duration="7808000" />
+      <workItem from="1476352997697" duration="3998000" />
+      <workItem from="1476367832486" duration="576000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230611000" />
+    <option name="totallyTimeSpent" value="365527000" />
+  </component>
+  <component name="TodoView" selected-index="3">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="171" y="23" width="1076" height="787" extended-state="0" />
-    <editor active="true" />
+    <frame x="59" y="305" width="1154" height="821" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18401487" sideWeight="0.49391305" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920793" sideWeight="0.503876" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17917034" sideWeight="0.49391305" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.503876" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18383518" sideWeight="0.50608695" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09749304" sideWeight="0.49612403" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920793" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11038961" sideWeight="0.49612403" order="6" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920793" sideWeight="0.503876" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.503876" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16111112" sideWeight="0.49391305" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17439863" sideWeight="0.49391305" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920793" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18383518" sideWeight="0.50608695" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17326732" sideWeight="0.49612403" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.096402876" sideWeight="0.49612403" order="6" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -526,368 +742,11 @@
           <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="27" />
+      <option name="time" value="31" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/triangle_study.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="214" column="34" selection-start-line="214" selection-start-column="34" selection-end-line="214" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/background.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1440">
-          <caret line="96" column="31" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multipleRender.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2655">
-          <caret line="177" column="41" selection-start-line="177" selection-start-column="41" selection-end-line="177" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/drawcall.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/ballman.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multitexture.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loder_ply.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="70" column="39" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/canvastexturetest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="60" selection-start-line="17" selection-start-column="60" selection-end-line="17" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ballman.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/joint_test.js.map">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-575">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/joint_test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4545">
-          <caret line="298" column="0" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/test.ply">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="6166" column="34" selection-start-line="0" selection-start-column="0" selection-end-line="163329" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/test.es6">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/joint_test.es6">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loderTest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2685">
-          <caret line="179" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="210" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewangleTest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="75" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="159" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mountainTest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/vertex.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="163328" column="35" selection-start-line="163328" selection-start-column="35" selection-end-line="163328" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/facematerial_study.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="432" column="42" selection-start-line="432" selection-start-column="42" selection-end-line="432" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/triangle_study.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/font_texture_study.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cubemap.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/curveline.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/line_study.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Mirror.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="186" column="11" selection-start-line="186" selection-start-column="9" selection-end-line="186" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mirror_study.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="241" column="10" selection-start-line="241" selection-start-column="10" selection-end-line="241" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vj_test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3045">
-          <caret line="266" column="0" selection-start-line="266" selection-start-column="0" selection-end-line="266" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/textures/sprites/disc.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6465">
-          <caret line="431" column="0" selection-start-line="431" selection-start-column="0" selection-end-line="431" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vj_terrain.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="233" column="56" selection-start-line="233" selection-start-column="16" selection-end-line="233" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/three.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="21214" column="0" selection-start-line="21214" selection-start-column="0" selection-end-line="21214" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/convecgeomery_study.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="86" column="40" selection-start-line="0" selection-start-column="0" selection-end-line="447" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buffergeometry_study.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="85" column="27" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vj_billboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2175">
-          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buffer_geomery_particle_study.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="51" column="7" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drawcall.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cubemap_terrain_mirror.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2415">
-          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/PLYLoader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="72" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dispmapstudy.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-441">
-          <caret line="216" column="0" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vj_convex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4155">
-          <caret line="277" column="9" selection-start-line="263" selection-start-column="8" selection-end-line="277" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/hosted-git-info/git-host.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/TrackballControls.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4830">
-          <caret line="322" column="0" selection-start-line="322" selection-start-column="0" selection-end-line="322" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/plane.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2760">
-          <caret line="184" column="33" selection-start-line="184" selection-start-column="22" selection-end-line="184" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plane.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/linestudy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5475">
-          <caret line="365" column="48" selection-start-line="365" selection-start-column="48" selection-end-line="365" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/castshadow_study.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="271" column="66" selection-start-line="271" selection-start-column="7" selection-end-line="271" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multipleScene_study.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cubemap_next.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="103">
@@ -896,10 +755,359 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gpgpu_study.html">
+    <entry file="file://$PROJECT_DIR$/js/ParametricGeometries.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2130">
-          <caret line="66" column="38" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/CurveExtras.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/physi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/chroma.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Projector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canvas_geometry_shapes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03-shapes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webgl_lines_splines.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webgl_geometry_shapes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vj_convex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3720">
+          <caret line="248" column="0" selection-start-line="248" selection-start-column="0" selection-end-line="248" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webgl_clipping_advanced.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="204" column="79" selection-start-line="204" selection-start-column="41" selection-end-line="204" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buffer_geomery_particle_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="652">
+          <caret line="62" column="17" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/PLYLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6299">
+          <caret line="16" column="72" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/triangle_particle_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2805">
+          <caret line="187" column="4" selection-start-line="187" selection-start-column="4" selection-end-line="267" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/triangle_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/triangle_study.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="163" column="8" selection-start-line="163" selection-start-column="8" selection-end-line="166" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clipping_advanced_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="119" column="31" selection-start-line="110" selection-start-column="8" selection-end-line="119" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clipping_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="99" column="14" selection-start-line="99" selection-start-column="14" selection-end-line="99" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plane.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="46" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/castshadow_spline_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example_castShadow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-659">
+          <caret line="88" column="29" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loderTest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThePointOfView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="189" column="74" selection-start-line="189" selection-start-column="8" selection-end-line="189" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/brokenReborn.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webgl_geometries2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="72" column="90" selection-start-line="72" selection-start-column="90" selection-end-line="72" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buffergeometry_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="108" column="35" selection-start-line="108" selection-start-column="35" selection-end-line="108" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webgl_geometry_extrude_splines.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="152" column="48" selection-start-line="152" selection-start-column="48" selection-end-line="152" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shader_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/line_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/curlnoise.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gpu_particle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gpgpu_protoplanet_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="330" column="46" selection-start-line="329" selection-start-column="12" selection-end-line="330" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/GPUComputationRenderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-263">
+          <caret line="297" column="30" selection-start-line="297" selection-start-column="30" selection-end-line="297" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/castshadow_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="147" column="10" selection-start-line="139" selection-start-column="8" selection-end-line="147" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vj_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3870">
+          <caret line="258" column="72" selection-start-line="258" selection-start-column="8" selection-end-line="258" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vj_terrain.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1395">
+          <caret line="93" column="51" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="51" />
+          <folding>
+            <marker date="1476121654000" expanded="true" signature="6893:7846" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/three.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131445">
+          <caret line="8763" column="0" selection-start-line="8763" selection-start-column="0" selection-end-line="8763" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/DDSLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/MTLLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/OBJLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/linestudy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="365" column="48" selection-start-line="365" selection-start-column="48" selection-end-line="365" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/obj/f50/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/obj/zed/mesh.mtl" />
+    <entry file="file://$PROJECT_DIR$/vj_line.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/obj_mtl_study.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="79" column="35" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_github.com_DefinitelyTyped_DefinitelyTyped_raw_master_threejs_three.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20730">
+          <caret line="1385" column="8" selection-start-line="1385" selection-start-column="8" selection-end-line="1385" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/plane.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3480">
+          <caret line="232" column="45" selection-start-line="232" selection-start-column="37" selection-end-line="232" selection-end-column="45" />
           <folding />
         </state>
       </provider>

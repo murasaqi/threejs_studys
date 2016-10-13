@@ -192,18 +192,19 @@
        // scene.add( light );
 
         var geometry = new THREE.BoxGeometry( 40, 40, 40 );
+        var material = new THREE.MeshPhongMaterial( {
+            color:  0x111111,
+            specular: 0x555555,
+            shininess: 10,
+            shading:THREE.FlatShading
+        } );
 
         var offsetRad = 0.0;
         for ( var i = 0; i < 100; i ++ ) {
 
             var theta = Math.random()*Math.PI*2;
             var phi = Math.random()*Math.PI*2;
-            var object = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial( {
-                color:  0x111111,
-                specular: 0x555555,
-                shininess: 10,
-                shading:THREE.FlatShading
-            } ) );
+            var object = new THREE.Mesh( geometry, material);
 
 //            object.position.x = Math.random() * 1000 - 500;
 //            object.position.y = Math.random() * 600 - 300;
@@ -233,6 +234,27 @@
 
         }
 
+        var points = [];
+        for(var i = 0; i < 10; i++)
+        {
+            var randomx = -20 + Math.round(Math.random()*200);
+            var randomy = -15 + Math.round(Math.random()*400);
+            var randomz = -20 + Math.round(Math.random()*400);
+            points.push(new THREE.Vector3(randomx,randomy,randomz));
+        }
+
+//        var tubeGeomery = new THREE.TubeGeometry(
+//                new THREE.CatmullRomCurve3(points),
+//                95,1,12,true
+//        );
+//
+//
+//        var tubeMesh = new THREE.Mesh(tubeGeomery,material);
+//        tubeMesh.castShadow = true;
+//        tubeMesh.receiveShadow = true;
+//        scene.add(tubeMesh);
+
+
         renderer = new THREE.WebGLRenderer( { antialias: true } );
         //renderer.setClearColor( 0xf0f0f0 );
         renderer.setPixelRatio( window.devicePixelRatio );
@@ -258,6 +280,10 @@
 
         stats = new Stats();
         //container.appendChild( stats.dom );
+
+
+
+
 
 
         window.addEventListener( 'resize', onWindowResize, false );
